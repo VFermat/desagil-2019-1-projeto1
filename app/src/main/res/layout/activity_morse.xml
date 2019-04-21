@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="258dp"
+        android:layout_height="183dp"
+        android:backgroundTint="@color/colorAccent"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="360dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="143dp"
+        android:layout_height="96dp"
+        android:text="ADD NEW MSG"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="573dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="146dp"
+        android:layout_height="96dp"
+        android:text="SEND MSG"
+        tools:layout_editor_absoluteX="249dp"
+        tools:layout_editor_absoluteY="573dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="375dp"
+        android:layout_height="330dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Message..."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>

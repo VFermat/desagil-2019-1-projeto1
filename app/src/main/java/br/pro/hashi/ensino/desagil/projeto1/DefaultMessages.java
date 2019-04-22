@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 public class DefaultMessages extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "br.pro.hashi.ensino.desagil.projeto1.EXTRA_MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +55,10 @@ public class DefaultMessages extends AppCompatActivity {
         ListView messageList = (ListView) findViewById(R.id.messageList);
 
         // Criando um adaptador para a lista de mensagens.
-        ListAdapter buckysAdapter = new ArrayAdapter<String>(messageList.getContext(), android.R.layout.simple_list_item_1, messages);
+        ListAdapter messageListAdapter = new ArrayAdapter<String>(messageList.getContext(), android.R.layout.simple_list_item_1, messages);
 
         // Aplicando o adaptador no widget da lista de mensagens.
-        messageList.setAdapter(buckysAdapter);
+        messageList.setAdapter(messageListAdapter);
 
         // Criando um listener para quando o usuário clicar em uma mensagem.
         messageList.setOnItemClickListener(
@@ -69,6 +71,10 @@ public class DefaultMessages extends AppCompatActivity {
 
                         String message = String.valueOf(parent.getItemAtPosition(position));
                         Toast.makeText(DefaultMessages.this, message, Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(DefaultMessages.this, Morse.class);
+                        intent.putExtra(EXTRA_MESSAGE, message);
+                        startActivity(intent);
                     }
                 }
         );

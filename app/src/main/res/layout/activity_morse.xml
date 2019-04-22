@@ -1,33 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="258dp"
-        android:layout_height="183dp"
-        android:backgroundTint="@color/colorAccent"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="360dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="143dp"
-        android:layout_height="96dp"
-        android:text="ADD NEW MSG"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="573dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="146dp"
-        android:layout_height="96dp"
-        android:text="SEND MSG"
-        tools:layout_editor_absoluteX="249dp"
-        tools:layout_editor_absoluteY="573dp" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/editText3"
@@ -36,9 +13,37 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Message..."
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_weight="2"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_weight="3"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ADD NEW MSG"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="573dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="SEND MSG"
+            tools:layout_editor_absoluteX="249dp"
+            tools:layout_editor_absoluteY="573dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

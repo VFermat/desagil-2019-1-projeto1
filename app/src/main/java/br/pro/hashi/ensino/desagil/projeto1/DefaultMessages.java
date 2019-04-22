@@ -36,20 +36,16 @@ public class DefaultMessages extends AppCompatActivity {
         // para guardar as mensagens ou o Firebase.
         String[] messages = {
                 "Olá, tudo bem?",
-                "Preciso de ajuda!",
-                "Sepa que to morrendo",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "PPT é viadão.",
-                "HUE"};
+                "Como você vai?",
+                "Obrigado.",
+                "Ok.",
+                "Vejo isso depois.",
+                "Bom dia!",
+                "Boa noite!",
+                "Boa tarde!",
+                "Vamos sair?",
+                "O que vai fazer mais tarde?",
+                "Está livre esse fim de semana?"};
 
         // Pegando o widget que faz a lista de mensagens.
         ListView messageList = (ListView) findViewById(R.id.messageList);
@@ -69,9 +65,11 @@ public class DefaultMessages extends AppCompatActivity {
                         // selecionada já escrita.
                         // Por enquanto apenas printamos o que o usuário selecionou.
 
+                        // Pega a mensagem que foi seleconada.
                         String message = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(DefaultMessages.this, message, Toast.LENGTH_LONG).show();
 
+                        // Muda de tela e passa como variável para a próxima tela
+                        // a mensagem que foi selecionada.
                         Intent intent = new Intent(DefaultMessages.this, Morse.class);
                         intent.putExtra(EXTRA_MESSAGE, message);
                         startActivity(intent);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_contacts">
+    tools:context=".AddContacts">
 
     <Button
         android:id="@+id/Add_Contacts_Button"
@@ -54,6 +54,7 @@
         tools:layout_editor_absoluteY="8dp" />
 
     <ListView
+        android:id="@+id/contactList"
         android:layout_width="290dp"
         android:layout_height="533dp"
         android:clickable="false"

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddContacts"></activity>
-        <activity android:name=".activity_add_contacts" />
+        <activity android:name=".Morse"></activity>
         <activity android:name=".DefaultMessages" />
         <activity android:name=".MainActivity">
             <intent-filter>

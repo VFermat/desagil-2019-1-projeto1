@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Botão que leva a tela de mensagens padrão.
         Button defaultMessagesBTN = (Button) findViewById(R.id.default_messages_btn);
+        // Botão que leva a tela de compor mensagens
+        Button composeMessageBTN = (Button) findViewById(R.id.new_message_btn);
 
         // Cria um listener para quando esse botão é apertado.
         defaultMessagesBTN.setOnClickListener(new View.OnClickListener() {
@@ -22,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Muda de tela.
                 startActivity(new Intent(MainActivity.this, DefaultMessages.class));
+            }
+        });
+
+        // Cria um listener para quando esse botão é apertado.
+        composeMessageBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Morse.class));
             }
         });
     }

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".add_contacts"></activity>
+        <activity android:name=".AddContacts"></activity>
         <activity android:name=".activity_add_contacts" />
         <activity android:name=".DefaultMessages" />
         <activity android:name=".MainActivity">

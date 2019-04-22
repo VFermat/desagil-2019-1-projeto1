@@ -3,7 +3,7 @@ package br.pro.hashi.ensino.desagil.projeto1;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class add_contacts extends AppCompatActivity {
+public class AddContacts extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

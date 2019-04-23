@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Projeto1</string>
+    <string name="screen_main_new_message_btn">Compor Mensagem</string>
+    <string name="screen_main_default_messages_btn">Mensagens Padrão</string>
+    <string name="screen_main_contacts_btn">Contatos</string>
+    <string name="screen_defMsg_return_btn">Voltar</string>
+    <string name="screen_defMSg_addMsg_btn">Adicionar Mensagem</string>
 </resources>

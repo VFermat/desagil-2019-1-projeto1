@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".DefaultMessages">
 
     <ListView
         android:id="@+id/messageList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"></ListView>
+        android:layout_width="200dp"
+        android:layout_height="500dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorBackground"
+        ></ListView>
 
     <Button
         android:id="@+id/return_btn"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:text="Tela Principal" />
+        android:background="@drawable/oval_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toStartOf="@id/messageList"
+        android:layout_centerVertical="true"
+        android:text="@string/screen_defMsg_return_btn"
+        />
 
     <Button
         android:id="@+id/contacts_btn"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight="0.5"
-        android:text="Add New Message" />
+        android:background="@drawable/oval_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toEndOf="@id/messageList"
+        android:layout_centerVertical="true"
+        android:text="@string/screen_defMSg_addMsg_btn"
+        />
 
-</LinearLayout>
+</RelativeLayout>

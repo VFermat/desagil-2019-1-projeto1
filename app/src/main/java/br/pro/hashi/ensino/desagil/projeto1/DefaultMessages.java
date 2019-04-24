@@ -9,10 +9,42 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DefaultMessages extends AppCompatActivity {
 
+    // Declarando os botões:
+    private Button addDefMSg_btn;
+    private Button sendMsg_btn;
+    private Button upDefMsg_btn;
+    private Button downDefMsg_btn;
+
+    // Declarando as caixas de texto que exibem a lista de mensagens:
+    private TextView listItem1_box;
+    private TextView listItem2_box;
+    private TextView listItem3_box;
+    private TextView listItem4_box;
+    private TextView listItem5_box;
+
+    // Lista de mensagens. Poderiamos usar um arquivo JSON
+    // para guardar as mensagens ou o Firebase.
+    private String[] messages = {
+            "Olá, tudo bem?",
+            "Como você vai?",
+            "Obrigado.",
+            "Ok.",
+            "Vejo isso depois.",
+            "Bom dia!",
+            "Boa noite!",
+            "Boa tarde!",
+            "Vamos sair?",
+            "O que vai fazer mais tarde?",
+            "Está livre esse fim de semana?"};
+
+    private int currentMsgSelected;
+
+    // Usado para passar informação para a próxima tela.
     public static final String EXTRA_MESSAGE = "br.pro.hashi.ensino.desagil.projeto1.EXTRA_MESSAGE";
 
     @Override
@@ -20,61 +52,86 @@ public class DefaultMessages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_messages);
 
-        // Botão que leva a tela principal.
-        Button returnBTN = (Button) findViewById(R.id.return_btn);
+        // Botão que adiciona uma nova mensagem padrão.
+        this.addDefMSg_btn = (Button) findViewById(R.id.addDefMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        returnBTN.setOnClickListener(new View.OnClickListener() {
+        this.addDefMSg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Muda de tela.
-                startActivity(new Intent(DefaultMessages.this, MainActivity.class));
+                startActivity(new Intent(DefaultMessages.this, Morse.class));
             }
         });
 
-        // Lista de mensagens. Poderiamos usar um arquivo JSON
-        // para guardar as mensagens ou o Firebase.
-        String[] messages = {
-                "Olá, tudo bem?",
-                "Como você vai?",
-                "Obrigado.",
-                "Ok.",
-                "Vejo isso depois.",
-                "Bom dia!",
-                "Boa noite!",
-                "Boa tarde!",
-                "Vamos sair?",
-                "O que vai fazer mais tarde?",
-                "Está livre esse fim de semana?"};
 
-        // Pegando o widget que faz a lista de mensagens.
-        ListView messageList = (ListView) findViewById(R.id.messageList);
+        // Botão que envia a mensagem selecionada.
+        this.sendMsg_btn = (Button) findViewById(R.id.sendMsg_btn);
 
-        // Criando um adaptador para a lista de mensagens.
-        ListAdapter messageListAdapter = new ArrayAdapter<String>(messageList.getContext(), android.R.layout.simple_list_item_1, messages);
+        // Cria um listener para quando esse botão é apertado.
+        this.sendMsg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Muda de tela.
+                startActivity(new Intent(DefaultMessages.this, AddContacts.class));
+            }
+        });
 
-        // Aplicando o adaptador no widget da lista de mensagens.
-        messageList.setAdapter(messageListAdapter);
 
-        // Criando um listener para quando o usuário clicar em uma mensagem.
-        messageList.setOnItemClickListener(
-                new AdapterView.OnItemClickListener(){
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Dentro dessa função mudariamos para a tela de mensagem com a mensagem
-                        // selecionada já escrita.
-                        // Por enquanto apenas printamos o que o usuário selecionou.
+        // Botão que envia a mensagem selecionada.
+        this.upDefMsg_btn = (Button) findViewById(R.id.upDefMsg_btn);
 
-                        // Pega a mensagem que foi seleconada.
-                        String message = String.valueOf(parent.getItemAtPosition(position));
+        // Cria um listener para quando esse botão é apertado.
+        this.upDefMsg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveUpMsgList();
+            }
+        });
 
-                        // Muda de tela e passa como variável para a próxima tela
-                        // a mensagem que foi selecionada.
-                        Intent intent = new Intent(DefaultMessages.this, Morse.class);
-                        intent.putExtra(EXTRA_MESSAGE, message);
-                        startActivity(intent);
-                    }
-                }
-        );
+
+        // Botão que envia a mensagem selecionada.
+        this.downDefMsg_btn = (Button) findViewById(R.id.downDefMsg_btn);
+
+        // Cria um listener para quando esse botão é apertado.
+        this.downDefMsg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveDownMsgList();
+            }
+        });
+
+
+        // Caixa de texto que exibe as mensagens padrão.
+        this.listItem1_box = (TextView) findViewById(R.id.listItem1_box);
+        this.listItem1_box.setText(this.messages[0]);
+
+        this.listItem2_box = (TextView) findViewById(R.id.listItem2_box);
+        this.listItem2_box.setText(this.messages[1]);
+
+        this.listItem3_box = (TextView) findViewById(R.id.listItem3_box);
+        this.listItem3_box.setText(this.messages[2]);
+
+        this.listItem4_box = (TextView) findViewById(R.id.listItem4_box);
+        this.listItem4_box.setText(this.messages[3]);
+
+        this.listItem5_box = (TextView) findViewById(R.id.listItem5_box);
+        this.listItem5_box.setText(this.messages[4]);
+
+        this.currentMsgSelected = 2;
+    }
+
+
+    private void moveUpMsgList() {
+        this.listItem3_box.setText(this.messages[this.currentMsgSelected - 1]);
+
+        this.currentMsgSelected -= 1;
+    }
+
+
+    private void moveDownMsgList() {
+        this.listItem3_box.setText(this.messages[this.currentMsgSelected + 1]);
+
+        this.currentMsgSelected += 1;
     }
 }

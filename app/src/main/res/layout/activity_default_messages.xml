@@ -9,33 +9,140 @@
     android:background="@color/colorBackground"
     tools:context=".DefaultMessages">
 
-    <ListView
-        android:id="@+id/messageList"
-        android:layout_width="200dp"
-        android:layout_height="500dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorBackground"
-        ></ListView>
-
     <Button
-        android:id="@+id/return_btn"
+        android:id="@+id/addDefMsg_btn"
         android:background="@drawable/oval_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_toStartOf="@id/messageList"
-        android:layout_centerVertical="true"
-        android:text="@string/screen_defMsg_return_btn"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="25dp"
+        android:text="@string/screen_defMSg_addDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         />
 
     <Button
-        android:id="@+id/contacts_btn"
+        android:id="@+id/sendMsg_btn"
         android:background="@drawable/oval_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_toEndOf="@id/messageList"
-        android:layout_centerVertical="true"
-        android:text="@string/screen_defMSg_addMsg_btn"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="25dp"
+        android:text="@string/screen_defMsg_sendMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <Button
+        android:id="@+id/upDefMsg_btn"
+        android:background="@drawable/rectangle_button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/sendMsg_btn"
+        android:text="@string/screen_defMsg_upDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <Button
+        android:id="@+id/downDefMsg_btn"
+        android:background="@drawable/rectangle_button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/sendMsg_btn"
+        android:text="@string/screen_defMSg_downDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <TextView
+        android:id="@+id/listItem1_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem2_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem1_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem3_box"
+        android:background="@drawable/list_item"
+        android:backgroundTint="@color/colorListSelectedItem"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem2_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem4_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem3_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem5_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem4_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
         />
 
 </RelativeLayout>

@@ -1,32 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".DefaultMessages">
 
-    <ListView
-        android:id="@+id/messageList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"></ListView>
+    <Button
+        android:id="@+id/addDefMsg_btn"
+        android:background="@drawable/oval_button"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="25dp"
+        android:text="@string/screen_defMSg_addDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
 
     <Button
-        android:id="@+id/return_btn"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:text="Tela Principal" />
+        android:id="@+id/sendMsg_btn"
+        android:background="@drawable/oval_button"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="25dp"
+        android:text="@string/screen_defMsg_sendMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
 
     <Button
-        android:id="@+id/contacts_btn"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight="0.5"
-        android:text="Add New Message" />
+        android:id="@+id/upDefMsg_btn"
+        android:background="@drawable/rectangle_button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/sendMsg_btn"
+        android:text="@string/screen_defMsg_upDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/downDefMsg_btn"
+        android:background="@drawable/rectangle_button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/sendMsg_btn"
+        android:text="@string/screen_defMSg_downDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <TextView
+        android:id="@+id/listItem1_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem2_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem1_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem3_box"
+        android:background="@drawable/list_item"
+        android:backgroundTint="@color/colorListSelectedItem"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem2_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem4_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem3_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:id="@+id/listItem5_box"
+        android:background="@drawable/list_item"
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/listItem4_box"
+
+        android:paddingLeft="30dp"
+        android:gravity="center_vertical|left"
+
+        android:text="Mensagem"
+        android:textSize="25dp"
+        />
+
+</RelativeLayout>

@@ -14,8 +14,32 @@ public class Translator {
     // Você deve mudar o recheio deste construtor,
     // de acordo com os requisitos não-funcionais.
     public Translator() {
-        root = null;
-        map = null;
+        this.map = new HashMap<>();
+
+        String morseCodeTree = " etianmsurwdkgohvf l pjbxcyzq  54 3   2       16       7   8 90";
+        Node[] nodes = new Node[morseCodeTree.length()];
+
+        for (int i = 0; i < morseCodeTree.length(); i++) {
+            char nodeValue = morseCodeTree.charAt(i);
+            Node node = new Node(nodeValue);
+            nodes[i] = node;
+            if (nodeValue != ' ') {
+                this.map.put(nodeValue, node);
+            }
+        }
+
+        this.root = nodes[0];
+
+        for (int i = 0; i < morseCodeTree.length(); i++) {
+            if (i >= 1) {
+                nodes[i].setParent(nodes[(i-1)/2]);
+            }
+            if (i <= 30) {
+                nodes[i].setLeft(nodes[2*i + 1]);
+                nodes[i].setRight(nodes[2*(i + 1)]);
+            }
+        }
+
     }
 
 

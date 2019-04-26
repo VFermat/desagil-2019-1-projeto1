@@ -1,5 +1,6 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.BitSet;
 import java.util.LinkedList;
 
 public class DefaultMessages extends AppCompatActivity {
@@ -62,7 +66,6 @@ public class DefaultMessages extends AppCompatActivity {
             }
         });
 
-
         // Botão que envia a mensagem selecionada.
         this.sendMsg_btn = (Button) findViewById(R.id.sendMsg_btn);
 
@@ -70,8 +73,14 @@ public class DefaultMessages extends AppCompatActivity {
         this.sendMsg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(DefaultMessages.this, AddContacts.class));
+                // Pegando a mensagem selecionada:
+                String selectedMsg = getSelectedMsg();
+
+                // Muda de tela e passa como variável para a próxima tela
+                // a mensagem que foi selecionada.
+                Intent intent = new Intent(DefaultMessages.this, Morse.class);
+                intent.putExtra(EXTRA_MESSAGE, selectedMsg);
+                startActivity(intent);
             }
         });
 
@@ -141,6 +150,9 @@ public class DefaultMessages extends AppCompatActivity {
         msgListIndex.add(4);
     }
 
+    private String getSelectedMsg() {
+        return this.messages[this.msgListIndex.get(2)];
+    }
 
     private void moveUpMsgList() {
         // Essa função sobe a lista de mensagens.
@@ -181,5 +193,29 @@ public class DefaultMessages extends AppCompatActivity {
                 this.msgListIndex.set(i, 0);
             }
         }
+    }
+
+    public String loadJSONFromAsset(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("defaut_messages.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
     }
 }

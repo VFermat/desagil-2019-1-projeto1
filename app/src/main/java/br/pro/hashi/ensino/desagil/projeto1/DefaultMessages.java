@@ -12,20 +12,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DefaultMessages extends AppCompatActivity {
+import java.util.LinkedList;
 
+public class DefaultMessages extends AppCompatActivity {
     // Declarando os botões:
     private Button addDefMSg_btn;
     private Button sendMsg_btn;
     private Button upDefMsg_btn;
     private Button downDefMsg_btn;
 
-    // Declarando as caixas de texto que exibem a lista de mensagens:
-    private TextView listItem1_box;
-    private TextView listItem2_box;
-    private TextView listItem3_box;
-    private TextView listItem4_box;
-    private TextView listItem5_box;
+    // Lista que guarda todas as caixas de texto que exibem as mensagens.
+    private LinkedList<TextView> msgList = new LinkedList<>();
+
+    // Lista que guarda o index da mensagem sendo mostrada.
+    private LinkedList<Integer> msgListIndex = new LinkedList<>();
 
     // Lista de mensagens. Poderiamos usar um arquivo JSON
     // para guardar as mensagens ou o Firebase.
@@ -41,8 +41,6 @@ public class DefaultMessages extends AppCompatActivity {
             "Vamos sair?",
             "O que vai fazer mais tarde?",
             "Está livre esse fim de semana?"};
-
-    private int currentMsgSelected;
 
     // Usado para passar informação para a próxima tela.
     public static final String EXTRA_MESSAGE = "br.pro.hashi.ensino.desagil.projeto1.EXTRA_MESSAGE";
@@ -103,35 +101,85 @@ public class DefaultMessages extends AppCompatActivity {
 
 
         // Caixa de texto que exibe as mensagens padrão.
-        this.listItem1_box = (TextView) findViewById(R.id.listItem1_box);
-        this.listItem1_box.setText(this.messages[0]);
+        TextView listItem1_box = (TextView) findViewById(R.id.listItem1_box);
+        // Mudando a mensagem mostrada.
+        listItem1_box.setText(this.messages[0]);
+        // Adicionando à lista de caixas de texto e à lista de indexes.
+        msgList.add(listItem1_box);
+        msgListIndex.add(0);
 
-        this.listItem2_box = (TextView) findViewById(R.id.listItem2_box);
-        this.listItem2_box.setText(this.messages[1]);
+        // Caixa de texto que exibe as mensagens padrão.
+        TextView listItem2_box = (TextView) findViewById(R.id.listItem2_box);
+        // Mudando a mensagem mostrada.
+        listItem2_box.setText(this.messages[1]);
+        // Adicionando à lista de caixas de texto e à lista de indexes.
+        msgList.add(listItem2_box);
+        msgListIndex.add(1);
 
-        this.listItem3_box = (TextView) findViewById(R.id.listItem3_box);
-        this.listItem3_box.setText(this.messages[2]);
+        // Caixa de texto que exibe as mensagens padrão.
+        TextView listItem3_box = (TextView) findViewById(R.id.listItem3_box);
+        // Mudando a mensagem mostrada.
+        listItem3_box.setText(this.messages[2]);
+        // Adicionando à lista de caixas de texto e à lista de indexes.
+        msgList.add(listItem3_box);
+        msgListIndex.add(2);
 
-        this.listItem4_box = (TextView) findViewById(R.id.listItem4_box);
-        this.listItem4_box.setText(this.messages[3]);
+        // Caixa de texto que exibe as mensagens padrão.
+        TextView listItem4_box = (TextView) findViewById(R.id.listItem4_box);
+        // Mudando a mensagem mostrada.
+        listItem4_box.setText(this.messages[3]);
+        // Adicionando à lista de caixas de texto e à lista de indexes.
+        msgList.add(listItem4_box);
+        msgListIndex.add(3);
 
-        this.listItem5_box = (TextView) findViewById(R.id.listItem5_box);
-        this.listItem5_box.setText(this.messages[4]);
-
-        this.currentMsgSelected = 2;
+        // Caixa de texto que exibe as mensagens padrão.
+        TextView listItem5_box = (TextView) findViewById(R.id.listItem5_box);
+        // Mudando a mensagem mostrada.
+        listItem5_box.setText(this.messages[4]);
+        // Adicionando à lista de caixas de texto e à lista de indexes.
+        msgList.add(listItem5_box);
+        msgListIndex.add(4);
     }
 
 
     private void moveUpMsgList() {
-        this.listItem3_box.setText(this.messages[this.currentMsgSelected - 1]);
+        // Essa função sobe a lista de mensagens.
 
-        this.currentMsgSelected -= 1;
+        // Loop que passa por cada caixa de texto e o index da mensagem que está mostrando.
+        for (int i = 0; i <= this.msgList.size() - 1; i++) {
+            // Pegando o index e a caixa de texto.
+            TextView textBox = this.msgList.get(i);
+            int msgIndex = this.msgListIndex.get(i);
+
+            // Lógica que se encarrega de subir a lista.
+            if (msgIndex - 1 >= 0) {
+                textBox.setText(this.messages[msgIndex - 1]);
+                this.msgListIndex.set(i, msgIndex - 1);
+            } else {
+                textBox.setText(this.messages[this.messages.length - 1]);
+                this.msgListIndex.set(i, this.messages.length - 1);
+            }
+        }
     }
 
 
     private void moveDownMsgList() {
-        this.listItem3_box.setText(this.messages[this.currentMsgSelected + 1]);
+        // Essa função desce a lista de mensagens.
 
-        this.currentMsgSelected += 1;
+        // Loop que passa por cada caixa de texto e o index da mensagem que está mostrando.
+        for (int i = 0; i <= this.msgList.size() - 1; i++) {
+            // Pegando o index e a caixa de texto.
+            TextView textBox = this.msgList.get(i);
+            int msgIndex = this.msgListIndex.get(i);
+
+            // Lógica que se encarrega de descer a lista.
+            if (msgIndex + 1 <= this.messages.length - 1) {
+                textBox.setText(this.messages[msgIndex + 1]);
+                this.msgListIndex.set(i, msgIndex + 1);
+            } else {
+                textBox.setText(this.messages[0]);
+                this.msgListIndex.set(i, 0);
+            }
+        }
     }
 }

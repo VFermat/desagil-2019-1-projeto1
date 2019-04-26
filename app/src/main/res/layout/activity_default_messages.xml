@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,11 +12,16 @@
     <Button
         android:id="@+id/addDefMsg_btn"
         android:background="@drawable/oval_button"
+
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="25dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
         android:text="@string/screen_defMSg_addDefMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         />
@@ -24,11 +29,16 @@
     <Button
         android:id="@+id/sendMsg_btn"
         android:background="@drawable/oval_button"
+
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="25dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
         android:text="@string/screen_defMsg_sendMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         />
@@ -36,10 +46,17 @@
     <Button
         android:id="@+id/upDefMsg_btn"
         android:background="@drawable/rectangle_button"
+
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@id/sendMsg_btn"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+
+        app:layout_constraintTop_toTopOf="@+id/sendMsg_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+
         android:text="@string/screen_defMsg_upDefMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         />
@@ -47,10 +64,17 @@
     <Button
         android:id="@+id/downDefMsg_btn"
         android:background="@drawable/rectangle_button"
+
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@id/sendMsg_btn"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+
+        app:layout_constraintBottom_toBottomOf="@id/sendMsg_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+
         android:text="@string/screen_defMSg_downDefMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         />
@@ -61,13 +85,18 @@
 
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
 
-        android:paddingLeft="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+
         android:gravity="center_vertical|left"
-
+        android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="25dp"
         />
@@ -78,14 +107,18 @@
 
         android:layout_width="match_parent"
         android:layout_height="80dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem1_box"
+
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@id/listItem1_box"
+        android:layout_marginEnd="15dp"
 
-        android:paddingLeft="30dp"
         android:gravity="center_vertical|left"
-
+        android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="25dp"
         />
@@ -97,15 +130,19 @@
 
         android:layout_width="match_parent"
         android:layout_height="80dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem2_box"
+
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@id/listItem2_box"
+        android:layout_marginEnd="15dp"
 
-        android:paddingLeft="30dp"
         android:gravity="center_vertical|left"
-
-        android:text="Mensagem"
+        android:paddingLeft="30dp"
+        android:text="Mensagem Selecionada"
         android:textSize="25dp"
         />
 
@@ -115,14 +152,18 @@
 
         android:layout_width="match_parent"
         android:layout_height="80dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem3_box"
+
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@id/listItem3_box"
+        android:layout_marginEnd="15dp"
 
-        android:paddingLeft="30dp"
         android:gravity="center_vertical|left"
-
+        android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="25dp"
         />
@@ -133,16 +174,20 @@
 
         android:layout_width="match_parent"
         android:layout_height="80dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem4_box"
+
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@id/listItem4_box"
+        android:layout_marginEnd="15dp"
 
-        android:paddingLeft="30dp"
         android:gravity="center_vertical|left"
-
+        android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="25dp"
         />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

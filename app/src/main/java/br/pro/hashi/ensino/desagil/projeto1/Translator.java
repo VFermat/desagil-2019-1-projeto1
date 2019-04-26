@@ -46,14 +46,40 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public char morseToChar(String code) {
-        return ' ';
+        Node current = root;
+        for (int i = 0; i < code.length(); i++) {
+            char letter = code.charAt(i);
+
+            if (letter == '-') {
+                current = current.getRight();
+            } else if (letter == '.') {
+                current = current.getLeft();
+            } else {
+                return ' ';
+            }
+        }
+        return current.getValue();
     }
 
 
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public String charToMorse(char c) {
-        return " ";
+        Node current = map.get(c);
+        Node lastNode = map.get(c);
+        String morse = "";
+
+        while (current != root) {
+            current = current.getParent();
+            if (current.getLeft() == lastNode) {
+                morse = '.' + morse;
+            } else if (current.getRight() == lastNode) {
+                morse = '-' + morse;
+            }
+            lastNode = lastNode.getParent();
+        }
+
+        return morse;
     }
 
 

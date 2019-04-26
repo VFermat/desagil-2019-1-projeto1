@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,57 +8,31 @@
 
     <Button
         android:id="@+id/Add_Contacts_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="ADD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider2"
-        tools:layout_editor_absoluteX="57dp" />
+        android:layout_alignLeft="@id/Add_Contacts_Button"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="25dp"
+        android:text="ADD" />
 
     <Button
         android:id="@+id/Send_Massage_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Enviar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider2"
-        tools:layout_editor_absoluteX="265dp" />
+        android:layout_alignRight="@id/Send_Massage_Button"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="25dp"
+        android:text="Enviar" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="395dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="549dp" />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="1dp"
-        android:layout_height="715dp"
-        android:layout_marginTop="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toTopOf="@+id/divider"
-        tools:layout_editor_absoluteX="204dp" />
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="1dp"
-        android:layout_height="715dp"
-        android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteX="306dp"
-        tools:layout_editor_absoluteY="8dp" />
 
     <ListView
         android:id="@+id/contactList"
-        android:layout_width="290dp"
-        android:layout_height="533dp"
-        android:clickable="false"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

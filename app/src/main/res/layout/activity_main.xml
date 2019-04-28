@@ -1,55 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorListItem"
     android:orientation="vertical"
-    android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/newMsg_btn"
-        android:background="@drawable/oval_button"
+        android:layout_width="120dp"
 
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="100dp"
+
+        android:background="@drawable/oval_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:text="@string/screen_main_new_message_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/defMsgs_btn"
+        android:layout_width="120dp"
+
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+
         android:background="@drawable/oval_button"
-
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:text="@string/screen_main_default_messages_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/newMsg_btn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/contacts_btn"
+        android:layout_width="120dp"
+
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+
         android:background="@drawable/oval_button"
-
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newMsg_btn" />
 
-        android:text="@string/screen_main_contacts_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="341dp"
+        android:layout_height="436dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/newMsg_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/splash" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="241dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/ic_vector_name" />
+
+    <Button
+        android:id="@+id/ItemContact"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/ic_person_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/contacts_btn"
+        app:layout_constraintEnd_toEndOf="@+id/contacts_btn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/contacts_btn"
+        app:layout_constraintTop_toTopOf="@+id/contacts_btn"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <Button
+        android:id="@+id/NewMessageIllustrator"
+        android:layout_width="82dp"
+        android:layout_height="83dp"
+        android:background="@drawable/ic_speech_bubble"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/newMsg_btn"
+        app:layout_constraintEnd_toEndOf="@+id/newMsg_btn"
+        app:layout_constraintStart_toStartOf="@+id/newMsg_btn"
+        app:layout_constraintTop_toTopOf="@+id/newMsg_btn" />
+
+    <Button
+        android:id="@+id/MessageListIllustratot"
+        android:layout_width="88dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/ic_chat_comment_oval_speech_bubble_with_text_lines"
+        app:layout_constraintBottom_toBottomOf="@+id/defMsgs_btn"
+        app:layout_constraintEnd_toEndOf="@+id/defMsgs_btn"
+        app:layout_constraintStart_toStartOf="@+id/defMsgs_btn"
+        app:layout_constraintTop_toTopOf="@+id/defMsgs_btn" />
 
 </android.support.constraint.ConstraintLayout>

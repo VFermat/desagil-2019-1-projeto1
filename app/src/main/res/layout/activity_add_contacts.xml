@@ -4,61 +4,209 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddContacts">
+    android:background="@color/colorListItem"
+    android:orientation="vertical"
+    tools:context=".DefaultMessages">
 
     <Button
-        android:id="@+id/Add_Contacts_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:id="@+id/addDefMsg_btn"
+        android:layout_width="130dp"
+
+        android:layout_height="130dp"
+        android:layout_marginStart="8dp"
+
         android:layout_marginBottom="8dp"
-        android:text="ADD"
+        android:background="@drawable/oval_button"
+
+        android:text="@string/screen_defMSg_addDefMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider2"
-        tools:layout_editor_absoluteX="57dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/Send_Massage_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:id="@+id/sendMsg_btn"
+        android:layout_width="130dp"
+
+        android:layout_height="130dp"
+        android:layout_marginEnd="8dp"
+
         android:layout_marginBottom="8dp"
-        android:text="Enviar"
+        android:background="@drawable/oval_button"
+
+        android:text="@string/screen_defMsg_sendMsg_btn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider2"
-        tools:layout_editor_absoluteX="265dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="395dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="549dp" />
+    <Button
+        android:id="@+id/upContact_btn2"
+        android:layout_width="130dp"
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="1dp"
-        android:layout_height="715dp"
-        android:layout_marginTop="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toTopOf="@+id/divider"
-        tools:layout_editor_absoluteX="204dp" />
+        android:layout_height="60dp"
+        android:layout_marginStart="3dp"
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="1dp"
-        android:layout_height="715dp"
-        android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteX="306dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rectangle_button"
 
-    <ListView
-        android:id="@+id/contactList"
-        android:layout_width="290dp"
-        android:layout_height="533dp"
         android:clickable="false"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+        tools:layout_editor_absoluteY="594dp" />
+
+    <Button
+        android:id="@+id/upContact_btn"
+        android:layout_width="130dp"
+
+        android:layout_height="60dp"
+        android:layout_marginStart="3dp"
+
+        android:layout_marginEnd="8dp"
+
+        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/upContact_btn2"
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn" />
+
+    <Button
+        android:id="@+id/downContact_btn"
+        android:layout_width="131dp"
+
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginEnd="8dp"
+
+        android:background="@drawable/rectangle_button"
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+        tools:layout_editor_absoluteY="656dp" />
+
+    <Button
+        android:id="@+id/downDefMsg_btn2"
+        android:layout_width="130dp"
+
+        android:layout_height="60dp"
+
+        android:layout_marginStart="16dp"
+
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/downContact_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn" />
+
+    <TextView
+        android:id="@+id/listItem1_box"
+        android:layout_width="match_parent"
+
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rectangle_button"
+        android:gravity="center_vertical|left"
+
+        android:paddingLeft="30dp"
+        android:text="Contato"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/listItem2_box"
+        android:layout_width="match_parent"
+
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rectangle_button"
+        android:gravity="center_vertical|left"
+
+        android:paddingLeft="30dp"
+        android:text="Contato"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem1_box" />
+
+    <TextView
+        android:id="@+id/listItem3_box"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/list_item"
+        android:backgroundTint="@color/colorListSelectedItem"
+        android:gravity="center_vertical|left"
+
+        android:paddingLeft="30dp"
+        android:text="Contato Selecionado"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem2_box" />
+
+    <TextView
+        android:id="@+id/listItem4_box"
+        android:layout_width="match_parent"
+
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rectangle_button"
+        android:gravity="center_vertical|left"
+
+        android:paddingLeft="30dp"
+        android:text="Contato"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem3_box" />
+
+    <TextView
+        android:id="@+id/listItem5_box"
+        android:layout_width="match_parent"
+
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rectangle_button"
+        android:gravity="center_vertical|left"
+
+        android:paddingLeft="30dp"
+        android:text="Contato"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listItem4_box" />
 
 </android.support.constraint.ConstraintLayout>

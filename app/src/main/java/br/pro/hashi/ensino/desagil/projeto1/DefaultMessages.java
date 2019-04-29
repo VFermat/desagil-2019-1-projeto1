@@ -87,6 +87,7 @@ public class DefaultMessages extends AppCompatActivity {
         this.sendMsg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Pegando a mensagem selecionada:
                 String selectedMsg = getSelectedMsg();
 

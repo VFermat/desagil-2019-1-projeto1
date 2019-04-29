@@ -1,55 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorListItem"
     android:orientation="vertical"
-    android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/newMsg_btn"
-        android:background="@drawable/oval_button"
+        android:layout_width="120dp"
 
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="100dp"
+
+        android:background="@drawable/newmsg_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:text="@string/screen_main_new_message_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/defMsgs_btn"
-        android:background="@drawable/oval_button"
+        android:layout_width="120dp"
 
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
 
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+
+        android:background="@drawable/def_msglist_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:text="@string/screen_main_default_messages_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/newMsg_btn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/contacts_btn"
-        android:background="@drawable/oval_button"
+        android:layout_width="120dp"
 
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
 
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+
+        android:background="@drawable/contacts_button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newMsg_btn" />
 
-        android:text="@string/screen_main_contacts_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        />
+    <ImageView
+        android:id="@+id/splashImg"
+        android:layout_width="341dp"
+        android:layout_height="436dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/newMsg_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/splash" />
+
+    <ImageView
+        android:id="@+id/logoImg"
+        android:layout_width="241dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toBottomOf="@+id/splashImg"
+        app:layout_constraintEnd_toEndOf="@+id/splashImg"
+        app:layout_constraintStart_toStartOf="@+id/splashImg"
+        app:layout_constraintTop_toTopOf="@+id/splashImg"
+        app:srcCompat="@drawable/ic_vector_name" />
 
 </android.support.constraint.ConstraintLayout>

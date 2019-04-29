@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/upDefMsg_btn"
+        android:id="@+id/upContact_btn"
         android:background="@drawable/up_button"
 
         android:layout_width="130dp"
@@ -56,7 +56,7 @@
         />
 
     <Button
-        android:id="@+id/downDefMsg_btn"
+        android:id="@+id/downContact_btn"
         android:background="@drawable/down_button"
 
         android:layout_width="130dp"
@@ -83,7 +83,7 @@
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
-        android:text="Mensagem"
+        android:text="Contato"
         android:textSize="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +104,7 @@
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
-        android:text="Mensagem"
+        android:text="Contato"
         android:textSize="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
-        android:text="Mensagem Selecionada"
+        android:text="Contato Selecionado"
         android:textSize="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +147,7 @@
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
-        android:text="Mensagem"
+        android:text="Contato"
         android:textSize="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
-        android:text="Mensagem"
+        android:text="Contato"
         android:textSize="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"

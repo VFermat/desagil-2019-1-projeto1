@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Muda de tela.
-                startActivity(new Intent(MainActivity.this, AddContacts.class));
+                startActivity(new Intent(MainActivity.this, Contacts.class));
             }
         });
     }

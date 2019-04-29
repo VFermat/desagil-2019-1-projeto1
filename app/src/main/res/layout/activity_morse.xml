@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="236dp"
-        android:layout_weight="2"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Message..." />
+    <!--
+      GridLayout é um layout bem conveniente para
+      organizar as telas por grade. Neste exemplo,
+      temos uma com duas linhas e duas colunas.
+    -->
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="394dp"
-        android:layout_height="121dp"
-        android:layout_weight="3"
-        android:backgroundTint="@color/colorAccent" />
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:columnCount="2"
+android:rowCount="2"
+tools:context=".Morse">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+<!--
+  Repare que estamos forçando este campo de texto
+  a ocupar duas colunas em vez de apenas uma. Além
+  disso, usamos columnWeight para dizer que ela
+  deve tentar ocupar o espaço horizontal que puder.
+-->
+<EditText
+    android:id="@+id/text_message"
+    android:layout_height="wrap_content"
+    android:layout_columnSpan="2"
+    android:layout_columnWeight="1"
+    android:gravity="top"
+    android:hint="Mensagem"
+    android:minLines="5" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="ADD NEW MSG"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="573dp" />
+<!--
+  Repare que podemos usar o atributo inputType para
+  dizer especificamente que este campo é número de
+  telefone. Isso é ótimo para usabilidade, pois faz
+  com que o teclado fique restrito apenas a números.
+-->
+<EditText
+    android:id="@+id/text_phone"
+    android:layout_height="wrap_content"
+    android:layout_columnWeight="1"
+    android:hint="Telefone"
+    android:inputType="phone" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="SEND MSG"
-            tools:layout_editor_absoluteX="249dp"
-            tools:layout_editor_absoluteY="573dp" />
+<Button
+    android:id="@+id/button_send"
+    android:layout_height="wrap_content"
+    android:text="Enviar" />
 
-    </LinearLayout>
+</GridLayout>
 
-</LinearLayout>

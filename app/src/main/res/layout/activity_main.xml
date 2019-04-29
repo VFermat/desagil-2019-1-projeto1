@@ -15,7 +15,7 @@
         android:layout_height="120dp"
         android:layout_marginBottom="100dp"
 
-        android:background="@drawable/oval_button"
+        android:background="@drawable/newmsg_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
 
-        android:background="@drawable/oval_button"
+        android:background="@drawable/def_msglist_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/newMsg_btn"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,14 +47,14 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
 
-        android:background="@drawable/oval_button"
+        android:background="@drawable/contacts_button"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/newMsg_btn" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/splashImg"
         android:layout_width="341dp"
         android:layout_height="436dp"
         android:layout_marginStart="8dp"
@@ -68,49 +68,13 @@
         app:srcCompat="@drawable/splash" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/logoImg"
         android:layout_width="241dp"
         android:layout_height="195dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/splashImg"
+        app:layout_constraintEnd_toEndOf="@+id/splashImg"
+        app:layout_constraintStart_toStartOf="@+id/splashImg"
+        app:layout_constraintTop_toTopOf="@+id/splashImg"
         app:srcCompat="@drawable/ic_vector_name" />
-
-    <Button
-        android:id="@+id/ItemContact"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/ic_person_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/contacts_btn"
-        app:layout_constraintEnd_toEndOf="@+id/contacts_btn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/contacts_btn"
-        app:layout_constraintTop_toTopOf="@+id/contacts_btn"
-        app:layout_constraintVertical_bias="0.4" />
-
-    <Button
-        android:id="@+id/NewMessageIllustrator"
-        android:layout_width="82dp"
-        android:layout_height="83dp"
-        android:background="@drawable/ic_speech_bubble"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/newMsg_btn"
-        app:layout_constraintEnd_toEndOf="@+id/newMsg_btn"
-        app:layout_constraintStart_toStartOf="@+id/newMsg_btn"
-        app:layout_constraintTop_toTopOf="@+id/newMsg_btn" />
-
-    <Button
-        android:id="@+id/MessageListIllustratot"
-        android:layout_width="88dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/ic_chat_comment_oval_speech_bubble_with_text_lines"
-        app:layout_constraintBottom_toBottomOf="@+id/defMsgs_btn"
-        app:layout_constraintEnd_toEndOf="@+id/defMsgs_btn"
-        app:layout_constraintStart_toStartOf="@+id/defMsgs_btn"
-        app:layout_constraintTop_toTopOf="@+id/defMsgs_btn" />
 
 </android.support.constraint.ConstraintLayout>

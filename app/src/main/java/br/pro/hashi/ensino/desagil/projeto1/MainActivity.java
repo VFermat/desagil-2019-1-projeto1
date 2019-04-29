@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Muda de tela.
-                startActivity(new Intent(MainActivity.this, PermissionActivity.class));
+                startActivity(new Intent(MainActivity.this, Morse.class));
             }
         });
 

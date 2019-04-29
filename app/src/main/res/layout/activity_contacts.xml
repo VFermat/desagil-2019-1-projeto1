@@ -9,7 +9,7 @@
     tools:context=".DefaultMessages">
 
     <Button
-        android:id="@+id/addDefMsg_btn"
+        android:id="@+id/addContact_btn"
         android:layout_width="130dp"
 
         android:layout_height="130dp"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/sendMsg_btn"
+        android:id="@+id/sendToContact_btn"
         android:layout_width="130dp"
 
         android:layout_height="130dp"
@@ -50,9 +50,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
 
-        app:layout_constraintTop_toTopOf="@+id/sendMsg_btn"
-        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
-        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+        app:layout_constraintTop_toTopOf="@+id/sendToContact_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sendToContact_btn"
+        app:layout_constraintStart_toEndOf="@+id/addContact_btn"
         />
 
     <Button
@@ -65,9 +65,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
 
-        app:layout_constraintBottom_toBottomOf="@id/sendMsg_btn"
-        app:layout_constraintEnd_toStartOf="@+id/sendMsg_btn"
-        app:layout_constraintStart_toEndOf="@+id/addDefMsg_btn"
+        app:layout_constraintBottom_toBottomOf="@id/sendToContact_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sendToContact_btn"
+        app:layout_constraintStart_toEndOf="@+id/addContact_btn"
         />
 
     <TextView

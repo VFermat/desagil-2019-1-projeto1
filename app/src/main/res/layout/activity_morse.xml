@@ -14,38 +14,43 @@ android:columnCount="2"
 android:rowCount="2"
 tools:context=".Morse">
 
-<!--
-  Repare que estamos forçando este campo de texto
-  a ocupar duas colunas em vez de apenas uma. Além
-  disso, usamos columnWeight para dizer que ela
-  deve tentar ocupar o espaço horizontal que puder.
--->
-<EditText
-    android:id="@+id/text_message"
-    android:layout_height="wrap_content"
-    android:layout_columnSpan="2"
-    android:layout_columnWeight="1"
-    android:gravity="top"
-    android:hint="Mensagem"
-    android:minLines="5" />
+    <!--
+      Repare que estamos forçando este campo de texto
+      a ocupar duas colunas em vez de apenas uma. Além
+      disso, usamos columnWeight para dizer que ela
+      deve tentar ocupar o espaço horizontal que puder.
+    -->
+    <EditText
+        android:id="@+id/text_message"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="top"
+        android:hint="Mensagem"
+        android:minLines="5" />
 
-<!--
-  Repare que podemos usar o atributo inputType para
-  dizer especificamente que este campo é número de
-  telefone. Isso é ótimo para usabilidade, pois faz
-  com que o teclado fique restrito apenas a números.
--->
-<EditText
-    android:id="@+id/text_phone"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:hint="Telefone"
-    android:inputType="phone" />
+    <!--
+      Repare que podemos usar o atributo inputType para
+      dizer especificamente que este campo é número de
+      telefone. Isso é ótimo para usabilidade, pois faz
+      com que o teclado fique restrito apenas a números.
+    -->
+    <EditText
+        android:id="@+id/text_phone"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:hint="Telefone"
+        android:inputType="phone" />
 
-<Button
-    android:id="@+id/button_send"
-    android:layout_height="wrap_content"
-    android:text="Enviar" />
+    <Button
+        android:id="@+id/button_send"
+        android:layout_height="wrap_content"
+        android:text="Enviar" />
+
+    <Button
+        android:id="@+id/addMsgToList_btn"
+        android:layout_height="wrap_content"
+        android:text="Adicionar à lista" />
 
 </GridLayout>
 

@@ -44,7 +44,7 @@
         android:id="@+id/upDefMsg_btn"
         android:background="@drawable/up_button"
 
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="60dp"
 
         android:layout_marginStart="8dp"
@@ -59,7 +59,7 @@
         android:id="@+id/downDefMsg_btn"
         android:background="@drawable/down_button"
 
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="60dp"
 
         android:layout_marginStart="8dp"

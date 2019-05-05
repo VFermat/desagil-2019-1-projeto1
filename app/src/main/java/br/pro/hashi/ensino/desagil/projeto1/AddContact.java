@@ -7,37 +7,42 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class AddContact extends AppCompatActivity {
-    private Button buttonAdd;
+    // Declarando os widgets dessa tela.
+    private Button addContact_btn;
+    private EditText contactName_txt;
+    private EditText contactPhone_txt;
+
+    // Criando o objeto que contém a base de dados do Firebase.
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseRoot = this.database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
 
-        EditText textName = findViewById(R.id.Contact);
-        EditText textPhone = findViewById(R.id.Phone);
+        this.contactName_txt = findViewById(R.id.contactName_txt);
+        this.contactPhone_txt = findViewById(R.id.contactPhone_txt);
 
-        // Botão que adiciona um numero novo
-        this.buttonAdd = (Button) findViewById(R.id.buttonAdd);
+        // Botão que adiciona um contato novo.
+        this.addContact_btn = (Button) findViewById(R.id.addContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                Intent changeScreen = new Intent(AddContact.this, AddContacts.class);
-                Bundle bundle = new Bundle();
-                bundle.putString(textName.toString(), textPhone.toString());
-                changeScreen.putExtras(bundle);
-                */
-                Intent i = new Intent(AddContact.this, AddContact.class);
-                i.putExtra("name", textName.toString());
-                i.putExtra("phone", textPhone.toString());
-                startActivity(i);
-                startActivity(new Intent(AddContact.this, AddContact.class));
-            }
+        this.addContact_btn.setOnClickListener((view) -> {
+            // Pegando o que o usuário escreveu:
+            String contactName = this.contactName_txt.getText().toString();
+            String contactPhone = this.contactPhone_txt.getText().toString();
+
+            // Adicionando o contato à lista de contatos.
+            this.databaseRoot.child("contacts").child(contactName).setValue(contactPhone);
+
+            // Muda para a tela de contatos após o contato ser adicionado.
+            startActivity(new Intent(AddContact.this, Contacts.class));
         });
     }
 }

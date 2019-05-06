@@ -8,16 +8,12 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.widget.Button;
@@ -37,15 +33,14 @@ public class Morse extends AppCompatActivity {
     private boolean longHoldTimerRunning = false;
     private boolean avoidDoubleClick = false;
     private boolean newLetterRunning = false;
-    private EditText editText;
-    private EditText morseMessageEditText;
+    private EditText editTextMessage;
+    private EditText editTextMorseMessage;
 
     @SuppressLint("ClickableViewAccessibility")
     // Declarando os botões:
-    private EditText textMsg;
     private EditText textPhone;
-    private Button sendMsg_btn;
-    private Button addMsgToList_btn;
+    private Button buttonSendMsg;
+    private Button buttonAddMsgToList;
 
     // Criando o objeto que contém a base de dados do Firebase.
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -54,6 +49,7 @@ public class Morse extends AppCompatActivity {
     // Esta constante é um código que identifica o pedido de "mandar sms".
     private static final int REQUEST_SEND_SMS = 0;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,31 +59,29 @@ public class Morse extends AppCompatActivity {
         Intent intent = getIntent();
         this.message += intent.getStringExtra(DefaultMessages.EXTRA_MESSAGE);
 
-        this.editText = findViewById(R.id.editText3);
+        this.editTextMessage = findViewById(R.id.text_message);
         updateText();
 
-        this.morseMessageEditText = findViewById(R.id.editText);
+        this.editTextMorseMessage = findViewById(R.id.morse_message);
         updateMorseText();
 
-        Button morseButton = findViewById(R.id.button);
+        Button morseButton = findViewById(R.id.morse);
         morseButton.setOnLongClickListener(longHoldListener);
         morseButton.setOnTouchListener(longHoldTouchListener);
         morseButton.setOnClickListener(clickListener);String IncomingMsg = intent.getStringExtra(DefaultMessages.EXTRA_MESSAGE);
 
         // Pegando o widgets.
-        this.textMsg = (EditText) findViewById(R.id.text_message);
         this.textPhone = (EditText) findViewById(R.id.text_phone);
-        this.sendMsg_btn = (Button) findViewById(R.id.button_send);
-        this.addMsgToList_btn = (Button) findViewById(R.id.addMsgToList_btn);
+        this.buttonSendMsg = (Button) findViewById(R.id.button_send);
+        this.buttonAddMsgToList = (Button) findViewById(R.id.button_add);
 
         // Colocando a mensagem recebida na caixa de texto.
-        this.textMsg.setText(message);
 
         // Cria um listener para quando esse botão é apertado.
-        this.sendMsg_btn.setOnClickListener((view) -> {
+        this.buttonSendMsg.setOnClickListener((view) -> {
             // Verifica se o aplicativo tem a permissão desejada.
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-                String message = this.textMsg.getText().toString();
+                String message = this.editTextMessage.getText().toString();
 
                 if (message.isEmpty()) {
                     showToast("Mensagem inválida!");
@@ -129,9 +123,9 @@ public class Morse extends AppCompatActivity {
         });
 
         // Cria um listener para quando esse botão é apertado.
-        this.addMsgToList_btn.setOnClickListener((view) -> {
+        this.buttonAddMsgToList.setOnClickListener((view) -> {
             // Pegando o que o usuário escreveu:
-            String message = this.textMsg.getText().toString();
+            String message = this.editTextMessage.getText().toString();
 
             // Adicionando o contato à lista de contatos.
             this.databaseRoot.child("messages").child(message).setValue(message);
@@ -263,11 +257,11 @@ public class Morse extends AppCompatActivity {
     };
 
     private void updateText() {
-        this.editText.setText(this.message);
+        this.editTextMessage.setText(this.message);
     }
 
     private void updateMorseText() {
-        this.morseMessageEditText.setText(this.morseWord);
+        this.editTextMorseMessage.setText(this.morseWord);
     }
 
     private void vibrate() {
@@ -289,9 +283,6 @@ public class Morse extends AppCompatActivity {
         }
         morseWord = "";
     }
-=======
-
->>>>>>> 9595a6873c981b1c1439092d3c7e5dff976682f1
 
     // Método de conveniência para mostrar uma bolha de texto.
     private void showToast(String text) {

@@ -25,6 +25,7 @@ tools:context=".Morse">
     android:minLines="5" />
 
     <EditText
+        android:id="@+id/morse_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Morse..."

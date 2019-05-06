@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FF0008</color>
 
-    <color name="colorBackground">#8ADF6C</color>
+    <color name="colorBackground">#9F9F9F</color>
     <color name="colorButtons">#42A5F5</color>
     <color name="colorListItem">#FFFFFF</color>
     <color name="colorListSelectedItem">#EDBA56</color>

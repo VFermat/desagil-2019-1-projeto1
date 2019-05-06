@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorListItem"
     tools:context=".AddContact">
 
 
@@ -13,11 +14,11 @@
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="62dp"
         android:layout_weight="3"
         android:background="@drawable/oval_button"
-        android:text="ADD"
-        android:backgroundTint="@color/colorAccent" />
+        android:backgroundTint="@color/colorButtons"
+        android:text="ADD" />
 
     <EditText
         android:id="@+id/contactName_txt"

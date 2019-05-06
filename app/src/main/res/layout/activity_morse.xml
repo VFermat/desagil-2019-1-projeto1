@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
+android:background="@color/colorListItem"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".Morse">
@@ -11,25 +12,27 @@ tools:context=".Morse">
   disso, usamos columnWeight para dizer que ela
   deve tentar ocupar o espaço horizontal que puder.
 -->
-<EditText
-    android:id="@+id/text_message"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="400dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="50dp"
-    android:layout_marginRight="10dp"
-    android:layout_centerHorizontal="true"
-    android:hint="Mensagem"
-    android:minLines="5" />
+    <EditText
+        android:id="@+id/text_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="400dp"
+        android:hint="Mensagem"
+        android:minLines="5"
+        android:textColorHint="@color/colorBackground" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Morse..."
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:hint="Morse..."
+        android:textColorHint="@color/colorBackground" />
 
 <!--
   Repare que podemos usar o atributo inputType para

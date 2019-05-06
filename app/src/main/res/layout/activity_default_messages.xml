@@ -42,7 +42,7 @@
 
     <Button
         android:id="@+id/upDefMsg_btn"
-        android:layout_width="110dp"
+
 
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -56,7 +56,6 @@
 
     <Button
         android:id="@+id/downDefMsg_btn"
-        android:layout_width="110dp"
 
         android:layout_height="50dp"
         android:layout_marginStart="8dp"

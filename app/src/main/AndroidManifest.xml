@@ -2,7 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.pro.hashi.ensino.desagil.projeto1">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.VIBRATE" />
+=======
+    <!--
+      Esta tag é NECESSÁRIA mas NÃO É SUFICIENTE para que
+      o aplicativo tenha permissão do celular para enviar
+      SMS. Para realmente ter essa permissão, deve haver
+      um processo de pedido. Veja a classe MainActivity.
+    -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+
+>>>>>>> 9595a6873c981b1c1439092d3c7e5dff976682f1
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddContacts"></activity>
+        <activity android:name=".Contacts"></activity>
+        <activity android:name=".AddContact"></activity>
         <activity android:name=".Morse"></activity>
         <activity android:name=".DefaultMessages" />
         <activity android:name=".MainActivity">

@@ -12,27 +12,25 @@ tools:context=".Morse">
   disso, usamos columnWeight para dizer que ela
   deve tentar ocupar o espaço horizontal que puder.
 -->
-    <EditText
-        android:id="@+id/text_message"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="400dp"
-        android:hint="Mensagem"
-        android:minLines="5"
-        android:textColorHint="@color/colorBackground" />
+<EditText
+    android:id="@+id/text_message"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="400dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="10dp"
+    android:layout_centerHorizontal="true"
+    android:hint="Mensagem"
+    android:minLines="5" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Morse..."
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="Morse..."
-        android:textColorHint="@color/colorBackground" />
+        android:layout_marginRight="10dp"/>
 
 <!--
   Repare que podemos usar o atributo inputType para
@@ -61,6 +59,12 @@ tools:context=".Morse">
         android:layout_weight="3"
         android:background="@drawable/oval_button"/>
 
+<!--
+  Repare que podemos usar o atributo inputType para
+  dizer especificamente que este campo é número de
+  telefone. Isso é ótimo para usabilidade, pois faz
+  com que o teclado fique restrito apenas a números.
+-->
     <Button
         android:id="@+id/button_send"
         android:layout_width="100dp"
@@ -98,6 +102,4 @@ tools:context=".Morse">
         android:textSize="25dp"
         android:background="@drawable/oval_button"/>
 
-
 </RelativeLayout>
-

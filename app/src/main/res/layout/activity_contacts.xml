@@ -10,12 +10,12 @@
 
     <Button
         android:id="@+id/addContact_btn"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
 
-        android:layout_height="130dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="32dp"
 
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/oval_button"
 
         android:text="@string/screen_defMSg_addDefMsg_btn"
@@ -26,12 +26,12 @@
 
     <Button
         android:id="@+id/sendToContact_btn"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
 
-        android:layout_height="130dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="32dp"
 
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/oval_button"
 
         android:text="@string/screen_defMsg_sendMsg_btn"
@@ -42,52 +42,54 @@
 
     <Button
         android:id="@+id/upContact_btn"
-        android:background="@drawable/up_button"
+        android:layout_width="110dp"
 
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
 
-        app:layout_constraintTop_toTopOf="@+id/sendToContact_btn"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/up_button"
+        app:layout_constraintBottom_toTopOf="@+id/downContact_btn"
         app:layout_constraintEnd_toStartOf="@+id/sendToContact_btn"
         app:layout_constraintStart_toEndOf="@+id/addContact_btn"
-        />
+        app:layout_constraintTop_toTopOf="@+id/sendToContact_btn" />
 
     <Button
         android:id="@+id/downContact_btn"
-        android:background="@drawable/down_button"
+        android:layout_width="110dp"
 
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
 
+        android:background="@drawable/down_button"
         app:layout_constraintBottom_toBottomOf="@id/sendToContact_btn"
         app:layout_constraintEnd_toStartOf="@+id/sendToContact_btn"
         app:layout_constraintStart_toEndOf="@+id/addContact_btn"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/upContact_btn" />
 
     <TextView
         android:id="@+id/listItem1_box"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
 
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="32dp"
 
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_button"
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
         android:text="Contato"
-        android:textSize="25dp"
+        android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,16 +98,16 @@
         android:layout_width="match_parent"
 
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="32dp"
 
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_button"
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
         android:text="Contato"
-        android:textSize="25dp"
+        android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -117,17 +119,17 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
 
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
 
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/list_item"
         android:backgroundTint="@color/colorListSelectedItem"
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
         android:text="Contato Selecionado"
-        android:textSize="25dp"
+        android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -139,16 +141,16 @@
         android:layout_width="match_parent"
 
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="32dp"
 
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_button"
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
         android:text="Contato"
-        android:textSize="25dp"
+        android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -160,16 +162,16 @@
         android:layout_width="match_parent"
 
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="32dp"
 
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_button"
         android:gravity="center_vertical|left"
 
         android:paddingLeft="30dp"
         android:text="Contato"
-        android:textSize="25dp"
+        android:textSize="24sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

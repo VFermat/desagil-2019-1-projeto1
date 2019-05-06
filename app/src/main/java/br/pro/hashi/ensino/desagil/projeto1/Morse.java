@@ -24,6 +24,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Morse extends AppCompatActivity {
 
     private final Translator translator = new Translator();
@@ -42,6 +45,11 @@ public class Morse extends AppCompatActivity {
     private EditText textMsg;
     private EditText textPhone;
     private Button sendMsg_btn;
+    private Button addMsgToList_btn;
+
+    // Criando o objeto que contém a base de dados do Firebase.
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseRoot = this.database.getReference();
 
     // Esta constante é um código que identifica o pedido de "mandar sms".
     private static final int REQUEST_SEND_SMS = 0;
@@ -70,6 +78,7 @@ public class Morse extends AppCompatActivity {
         this.textMsg = (EditText) findViewById(R.id.text_message);
         this.textPhone = (EditText) findViewById(R.id.text_phone);
         this.sendMsg_btn = (Button) findViewById(R.id.button_send);
+        this.addMsgToList_btn = (Button) findViewById(R.id.addMsgToList_btn);
 
         // Colocando a mensagem recebida na caixa de texto.
         this.textMsg.setText(message);
@@ -117,6 +126,18 @@ public class Morse extends AppCompatActivity {
 
                 ActivityCompat.requestPermissions(this, permissions, this.REQUEST_SEND_SMS);
             }
+        });
+
+        // Cria um listener para quando esse botão é apertado.
+        this.addMsgToList_btn.setOnClickListener((view) -> {
+            // Pegando o que o usuário escreveu:
+            String message = this.textMsg.getText().toString();
+
+            // Adicionando o contato à lista de contatos.
+            this.databaseRoot.child("messages").child(message).setValue(message);
+
+            // Muda para a tela de contatos após o contato ser adicionado.
+            startActivity(new Intent(Morse.this, DefaultMessages.class));
         });
     }
 

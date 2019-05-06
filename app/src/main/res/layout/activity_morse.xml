@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <!--
-      GridLayout é um layout bem conveniente para
-      organizar as telas por grade. Neste exemplo,
-      temos uma com duas linhas e duas colunas.
-    -->
-
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:columnCount="2"
-android:rowCount="2"
 tools:context=".Morse">
 
 <!--
@@ -22,12 +13,23 @@ tools:context=".Morse">
 -->
 <EditText
     android:id="@+id/text_message"
-    android:layout_height="wrap_content"
-    android:layout_columnSpan="2"
-    android:layout_columnWeight="1"
-    android:gravity="top"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="400dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="10dp"
+    android:layout_centerHorizontal="true"
     android:hint="Mensagem"
     android:minLines="5" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Morse..."
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
 
 <!--
   Repare que podemos usar o atributo inputType para
@@ -35,17 +37,63 @@ tools:context=".Morse">
   telefone. Isso é ótimo para usabilidade, pois faz
   com que o teclado fique restrito apenas a números.
 -->
-<EditText
-    android:id="@+id/text_phone"
-    android:layout_height="wrap_content"
-    android:layout_columnWeight="1"
-    android:hint="Telefone"
-    android:inputType="phone" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="DICIONÁRIO"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorButtons"/>
 
-<Button
-    android:id="@+id/button_send"
-    android:layout_height="wrap_content"
-    android:text="Enviar" />
+    <Button
+        android:id="@+id/morse"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_weight="3"
+        android:background="@drawable/oval_button"/>
 
-</GridLayout>
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="10dp"
+        android:text="enviar"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:background="@drawable/oval_button"/>
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:textColor="#FFFFFF"
+        android:text="DEL"
+        android:backgroundTint="@color/colorButtons"
+        android:textSize="25dp"/>
 
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="25dp"
+        android:text="Add nova"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:background="@drawable/oval_button"/>
+
+
+</RelativeLayout>

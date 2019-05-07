@@ -4,8 +4,13 @@
     <string name="screen_main_default_messages_btn">Mensagens Padrão</string>
     <string name="screen_main_contacts_btn">Contatos</string>
 
-    <string name="screen_defMsg_sendMsg_btn">Enviar</string>
-    <string name="screen_defMSg_addDefMsg_btn">Adicionar à lista</string>
+    <string name="screen_defMsg_sendMsg_btn">SEND</string>
+    <string name="screen_defMSg_addDefMsg_btn">ADD</string>
     <string name="screen_defMsg_upDefMsg_btn">UP</string>
     <string name="screen_defMSg_downDefMsg_btn">DOWN</string>
+
+    <string name="screen_contacts_sendToContact_btn">SEND</string>
+    <string name="screen_contacts_addContact_btn">ADD</string>
+    <string name="screen_contacts_upContact_btn">UP</string>
+    <string name="screen_contacts_downContact_btn">DOWN</string>
 </resources>

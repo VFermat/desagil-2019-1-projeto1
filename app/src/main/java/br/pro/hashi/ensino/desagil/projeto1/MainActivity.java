@@ -6,12 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
-public class MainActivity extends AppCompatActivity {
-
-    // Declarando os botões:
-    private Button defMsgs_btn;
-    private Button newMsg_btn;
-    private Button contacts_btn;
+public class MainActivity extends AppCompatActivity implements ActivityConstants {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,41 +14,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Botão que leva a tela de mensagens padrão.
-        this.defMsgs_btn = (Button) findViewById(R.id.defMsgs_btn);
+        // Declarando os botões:
+        Button defMsgsBtn = findViewById(R.id.defMsgs_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.defMsgs_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(MainActivity.this, DefaultMessages.class));
-            }
+        defMsgsBtn.setOnClickListener(v -> {
+            // Muda de tela.
+            startActivity(DefaultMessages.class);
         });
 
 
         // Botão que leva a tela de compor mensagens
-        this.newMsg_btn = (Button) findViewById(R.id.newMsg_btn);
+        Button newMsgBtn = findViewById(R.id.newMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.newMsg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(MainActivity.this, Morse.class));
-            }
+        newMsgBtn.setOnClickListener(v -> {
+            // Muda de tela.
+            startActivity(Morse.class);
         });
 
 
         // Botão que leva a tela de contatos
-        this.contacts_btn = (Button) findViewById(R.id.contacts_btn);
+        Button contactsBtn = findViewById(R.id.contacts_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.contacts_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(MainActivity.this, Contacts.class));
-            }
+        contactsBtn.setOnClickListener(v -> {
+            // Muda de tela.
+            startActivity(Contacts.class);
         });
+    }
+
+    private void startActivity(Class c) {
+        Intent intent = new Intent(MainActivity.this, c);
+        intent.putExtra("callingActivity", ActivityConstants.MAINACITVITY);
+        startActivity(intent);
     }
 }

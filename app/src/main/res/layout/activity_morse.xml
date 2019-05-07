@@ -12,23 +12,27 @@ tools:context=".Morse">
   disso, usamos columnWeight para dizer que ela
   deve tentar ocupar o espaço horizontal que puder.
 -->
-<EditText
-    android:id="@+id/text_message"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="400dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="50dp"
-    android:layout_marginRight="10dp"
-    android:layout_centerHorizontal="true"
-    android:hint="Mensagem"
-    android:minLines="5" />
+    <EditText
+        android:id="@+id/text_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="400dp"
+        android:hint="Mensagem"
+        android:minLines="5"
+        android:textColorHint="#808080"
+        android:textColor="#808080"/>
 
     <EditText
         android:id="@+id/morse_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Morse..."
+        android:hint="Morse"
+        android:textColorHint="#808080"
+        android:textColor="#808080"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"/>
@@ -42,7 +46,7 @@ tools:context=".Morse">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="DICIONÁRIO"

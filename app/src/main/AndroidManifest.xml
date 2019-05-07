@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.pro.hashi.ensino.desagil.projeto1">
 
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.VIBRATE" />
-=======
     <!--
       Esta tag é NECESSÁRIA mas NÃO É SUFICIENTE para que
       o aplicativo tenha permissão do celular para enviar
@@ -12,9 +10,6 @@
       um processo de pedido. Veja a classe MainActivity.
     -->
     <uses-permission android:name="android.permission.SEND_SMS" />
-
-
->>>>>>> 9595a6873c981b1c1439092d3c7e5dff976682f1
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

@@ -23,7 +23,8 @@ tools:context=".Morse">
         android:layout_marginBottom="400dp"
         android:hint="Mensagem"
         android:minLines="5"
-        android:textColorHint="#808080" />
+        android:textColorHint="#808080"
+        android:textColor="#808080"/>
 
     <EditText
         android:id="@+id/morse_message"
@@ -31,6 +32,7 @@ tools:context=".Morse">
         android:layout_height="wrap_content"
         android:hint="Morse"
         android:textColorHint="#808080"
+        android:textColor="#808080"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"/>

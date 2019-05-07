@@ -189,7 +189,7 @@ public class Morse extends AppCompatActivity {
                     newLetterTimer.start();
                 }
             }
-            return false;
+            return true;
         }
     };
 

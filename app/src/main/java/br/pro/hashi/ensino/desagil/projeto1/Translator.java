@@ -67,19 +67,21 @@ public class Translator {
     public String charToMorse(char c) {
         Node current = map.get(c);
         Node lastNode = map.get(c);
-        String morse = "";
+        StringBuilder morse = new StringBuilder();
 
         while (current != root) {
+            assert current != null;
             current = current.getParent();
             if (current.getLeft() == lastNode) {
-                morse = '.' + morse;
+                morse.insert(0, '.');
             } else if (current.getRight() == lastNode) {
-                morse = '-' + morse;
+                morse.insert(0, '-');
             }
+            assert lastNode != null;
             lastNode = lastNode.getParent();
         }
 
-        return morse;
+        return morse.toString();
     }
 
 

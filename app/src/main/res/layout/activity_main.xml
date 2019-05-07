@@ -10,10 +10,10 @@
 
     <Button
         android:id="@+id/newMsg_btn"
-        android:layout_width="110dp"
+        android:layout_width="90dp"
 
-        android:layout_height="110dp"
-        android:layout_marginBottom="164dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="64dp"
 
         android:background="@drawable/newmsg_button"
 
@@ -24,13 +24,13 @@
 
     <Button
         android:id="@+id/defMsgs_btn"
-        android:layout_width="110dp"
+        android:layout_width="90dp"
 
-        android:layout_height="110dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
 
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
 
         android:background="@drawable/def_msglist_button"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,13 +39,13 @@
 
     <Button
         android:id="@+id/contacts_btn"
-        android:layout_width="110dp"
+        android:layout_width="90dp"
 
-        android:layout_height="110dp"
+        android:layout_height="90dp"
         android:layout_marginStart="8dp"
 
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
 
         android:background="@drawable/contacts_button"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -55,8 +55,8 @@
 
     <ImageView
         android:id="@+id/splashImg"
-        android:layout_width="341dp"
-        android:layout_height="436dp"
+        android:layout_width="299dp"
+        android:layout_height="339dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
@@ -65,6 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423"
         app:srcCompat="@drawable/splash" />
 
     <ImageView

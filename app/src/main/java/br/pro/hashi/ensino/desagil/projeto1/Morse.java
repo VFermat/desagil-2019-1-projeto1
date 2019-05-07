@@ -71,7 +71,6 @@ public class Morse extends AppCompatActivity {
         morseButton.setOnClickListener(clickListener);String IncomingMsg = intent.getStringExtra(DefaultMessages.EXTRA_MESSAGE);
 
         // Pegando o widgets.
-        this.textPhone = (EditText) findViewById(R.id.text_phone);
         this.buttonSendMsg = (Button) findViewById(R.id.button_send);
         this.buttonAddMsgToList = (Button) findViewById(R.id.button_add);
 
@@ -88,7 +87,7 @@ public class Morse extends AppCompatActivity {
                     return;
                 }
 
-                String phone = this.textPhone.getText().toString();
+                String phone = "5511987448483";
 
                 // Esta verificação do número de telefone é bem
                 // rígida, pois exige até mesmo o código do país.

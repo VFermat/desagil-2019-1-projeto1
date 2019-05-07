@@ -17,25 +17,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
 
-public class DefaultMessages extends AppCompatActivity {
-    // Declarando os botões:
-    private Button addDefMSg_btn;
-    private Button sendMsg_btn;
-    private Button upDefMsg_btn;
-    private Button downDefMsg_btn;
+public class DefaultMessages extends AppCompatActivity implements ActivityConstants {
 
     // Lista que guarda todas as caixas de texto que exibem as mensagens.
-    private LinkedList<TextView> msgList = new LinkedList<>();
+    private final LinkedList<TextView> msgList = new LinkedList<>();
 
     // Lista que guarda o index da mensagem sendo mostrada.
-    private LinkedList<Integer> msgListIndex = new LinkedList<>();
+    private final LinkedList<Integer> msgListIndex = new LinkedList<>();
 
     // Lista de mensagens.
-    private LinkedList<String> messages = new LinkedList<>();
+    private final LinkedList<String> messages = new LinkedList<>();
 
     // Criando o objeto que contém a base de dados do Firebase.
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseRoot = this.database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseRoot = this.database.getReference();
 
     // Usado para passar informação para a próxima tela.
     public static final String EXTRA_MESSAGE = "br.pro.hashi.ensino.desagil.projeto1.EXTRA_MESSAGE";
@@ -44,6 +39,22 @@ public class DefaultMessages extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_messages);
+        Intent intent = getIntent();
+        int callingActivity = intent.getIntExtra("callingActivity", 0);
+        switch (callingActivity) {
+            case MAINACITVITY:
+                break;
+            case DEFAULTMESSAGESACTIVITY:
+                break;
+            case MORSEACTIVITY:
+                break;
+            case CONTACTACTIVITY:
+                break;
+            case ADDCONTACTACTIVITY:
+                break;
+            default:
+                throw new NullPointerException();
+        }
 
         // Para ler a base de dados toda vez que ela sofrer mudanças.
         databaseRoot.addValueEventListener(new ValueEventListener() {
@@ -68,92 +79,75 @@ public class DefaultMessages extends AppCompatActivity {
 
 
         // Botão que adiciona uma nova mensagem padrão.
-        this.addDefMSg_btn = (Button) findViewById(R.id.addDefMsg_btn);
+        // Declarando os botões:
+        Button addDefMSgBtn = findViewById(R.id.addDefMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.addDefMSg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(DefaultMessages.this, Morse.class));
-            }
+        addDefMSgBtn.setOnClickListener(v -> {
+            // Muda de tela.
+            startActivity(Morse.class);
         });
 
 
         // Botão que envia a mensagem selecionada.
-        this.sendMsg_btn = (Button) findViewById(R.id.sendMsg_btn);
+        Button sendMsgBtn = findViewById(R.id.sendMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.sendMsg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        sendMsgBtn.setOnClickListener(v -> {
 
-                // Pegando a mensagem selecionada:
-                String selectedMsg = getSelectedMsg();
+            // Pegando a mensagem selecionada:
+            String selectedMsg = getSelectedMsg();
 
-                // Muda de tela e passa como variável para a próxima tela
-                // a mensagem que foi selecionada.
-                Intent intent = new Intent(DefaultMessages.this, Morse.class);
-                intent.putExtra(EXTRA_MESSAGE, selectedMsg);
-                startActivity(intent);
-            }
+            // Muda de tela e passa como variável para a próxima tela
+            // a mensagem que foi selecionada.
+            startActivity(Morse.class, selectedMsg);
         });
 
 
         // Botão que sobe a lista de mensagens.
-        this.upDefMsg_btn = (Button) findViewById(R.id.upDefMsg_btn);
+        Button upDefMsgBtn = findViewById(R.id.upDefMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.upDefMsg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveUpMsgList();
-            }
-        });
+        upDefMsgBtn.setOnClickListener(v -> moveUpMsgList());
 
 
         // Botão que desce a lista de mensagens.
-        this.downDefMsg_btn = (Button) findViewById(R.id.downDefMsg_btn);
+        Button downDefMsgBtn = findViewById(R.id.downDefMsg_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.downDefMsg_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveDownMsgList();
-            }
-        });
+        downDefMsgBtn.setOnClickListener(v -> moveDownMsgList());
 
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem1_box = (TextView) findViewById(R.id.listItem1_box);
+        TextView listItem1_box = findViewById(R.id.listItem1_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         msgList.add(listItem1_box);
         msgListIndex.add(0);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem2_box = (TextView) findViewById(R.id.listItem2_box);
+        TextView listItem2_box = findViewById(R.id.listItem2_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         msgList.add(listItem2_box);
         msgListIndex.add(1);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem3_box = (TextView) findViewById(R.id.listItem3_box);
+        TextView listItem3_box = findViewById(R.id.listItem3_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         msgList.add(listItem3_box);
         msgListIndex.add(2);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem4_box = (TextView) findViewById(R.id.listItem4_box);
+        TextView listItem4_box = findViewById(R.id.listItem4_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         msgList.add(listItem4_box);
         msgListIndex.add(3);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem5_box = (TextView) findViewById(R.id.listItem5_box);
+        TextView listItem5_box = findViewById(R.id.listItem5_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         msgList.add(listItem5_box);
@@ -218,5 +212,18 @@ public class DefaultMessages extends AppCompatActivity {
         this.msgList.get(2).setText(this.messages.get(2));
         this.msgList.get(3).setText(this.messages.get(3));
         this.msgList.get(4).setText(this.messages.get(4));
+    }
+
+    private void startActivity(Class c, String message) {
+        Intent intent = new Intent(DefaultMessages.this, c);
+        intent.putExtra("message", message);
+        intent.putExtra("callingActivity", DEFAULTMESSAGESACTIVITY);
+        startActivity(intent);
+    }
+
+    private void startActivity(Class c) {
+        Intent intent = new Intent(DefaultMessages.this, c);
+        intent.putExtra("callingActivity", DEFAULTMESSAGESACTIVITY);
+        startActivity(intent);
     }
 }

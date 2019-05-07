@@ -10,15 +10,15 @@
 
     <Button
         android:id="@+id/addContact_btn"
-        android:layout_width="110dp"
+        android:layout_width="90dp"
 
-        android:layout_height="110dp"
+        android:layout_height="90dp"
         android:layout_marginStart="32dp"
 
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/oval_button"
 
-        android:text="@string/screen_defMSg_addDefMsg_btn"
+        android:text="@string/screen_contacts_addContact_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,15 +26,15 @@
 
     <Button
         android:id="@+id/sendToContact_btn"
-        android:layout_width="110dp"
+        android:layout_width="90dp"
 
-        android:layout_height="110dp"
+        android:layout_height="90dp"
         android:layout_marginEnd="32dp"
 
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/oval_button"
 
-        android:text="@string/screen_defMsg_sendMsg_btn"
+        android:text="@string/screen_contacts_sendToContact_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,11 +44,10 @@
         android:id="@+id/upContact_btn"
         android:layout_width="110dp"
 
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
 
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
 
         android:background="@drawable/up_button"
         app:layout_constraintBottom_toTopOf="@+id/downContact_btn"
@@ -60,10 +59,9 @@
         android:id="@+id/downContact_btn"
         android:layout_width="110dp"
 
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
 
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
 
         android:background="@drawable/down_button"
@@ -79,7 +77,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="32dp"
 
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rectangle_button"
         android:gravity="center_vertical|left"

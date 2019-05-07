@@ -39,12 +39,10 @@ public class Morse extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     // Declarando os botões:
     private EditText textPhone;
-    private Button buttonSendMsg;
-    private Button buttonAddMsgToList;
 
     // Criando o objeto que contém a base de dados do Firebase.
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseRoot = this.database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseRoot = this.database.getReference();
 
     // Esta constante é um código que identifica o pedido de "mandar sms".
     private static final int REQUEST_SEND_SMS = 0;
@@ -68,16 +66,16 @@ public class Morse extends AppCompatActivity {
         Button morseButton = findViewById(R.id.morse);
         morseButton.setOnLongClickListener(longHoldListener);
         morseButton.setOnTouchListener(longHoldTouchListener);
-        morseButton.setOnClickListener(clickListener);String IncomingMsg = intent.getStringExtra(DefaultMessages.EXTRA_MESSAGE);
+        morseButton.setOnClickListener(clickListener);
 
         // Pegando o widgets.
-        this.buttonSendMsg = (Button) findViewById(R.id.button_send);
-        this.buttonAddMsgToList = (Button) findViewById(R.id.button_add);
+        Button buttonSendMsg = findViewById(R.id.button_send);
+        Button buttonAddMsgToList = findViewById(R.id.button_add);
 
         // Colocando a mensagem recebida na caixa de texto.
 
         // Cria um listener para quando esse botão é apertado.
-        this.buttonSendMsg.setOnClickListener((view) -> {
+        buttonSendMsg.setOnClickListener((view) -> {
             // Verifica se o aplicativo tem a permissão desejada.
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
                 String message = this.editTextMessage.getText().toString();
@@ -117,12 +115,12 @@ public class Morse extends AppCompatActivity {
                         Manifest.permission.SEND_SMS,
                 };
 
-                ActivityCompat.requestPermissions(this, permissions, this.REQUEST_SEND_SMS);
+                ActivityCompat.requestPermissions(this, permissions, REQUEST_SEND_SMS);
             }
         });
 
         // Cria um listener para quando esse botão é apertado.
-        this.buttonAddMsgToList.setOnClickListener((view) -> {
+        buttonAddMsgToList.setOnClickListener((view) -> {
             // Pegando o que o usuário escreveu:
             String message = this.editTextMessage.getText().toString();
 
@@ -243,7 +241,7 @@ public class Morse extends AppCompatActivity {
         }
     };
 
-    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(1000, 100) {
+    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(500, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             avoidDoubleClick = true;
@@ -268,17 +266,12 @@ public class Morse extends AppCompatActivity {
         v.vibrate(VibrationEffect.createOneShot(50, 1));
     }
 
-    private void showToast() {
-        Toast toast = Toast.makeText(this, "Morse Invalido", Toast.LENGTH_LONG);
-        toast.show();
-    }
-
     private void translateMorse() {
         try {
             char translatedMorse = translator.morseToChar(morseWord);
             message += translatedMorse;
         } catch (Exception exception) {
-            showToast();
+            showToast("Morse Invalido");
         }
         morseWord = "";
     }

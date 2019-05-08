@@ -17,7 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +33,8 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     private boolean longHoldTimerRunning = false;
     private boolean avoidDoubleClick = false;
     private boolean newLetterRunning = false;
-    private EditText editTextMessage;
-    private EditText editTextMorseMessage;
+    private TextView editTextMessage;
+    private TextView editTextMorseMessage;
     private Class nextActivity;
     private String phoneNumber;
     private String contactName;
@@ -224,7 +224,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer spaceTimer = new CountDownTimer(2000, 1000) {
+    private final CountDownTimer spaceTimer = new CountDownTimer(600, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             spaceTimerRunning = true;
@@ -239,7 +239,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer newLetterTimer = new CountDownTimer(5000, 1000) {
+    private final CountDownTimer newLetterTimer = new CountDownTimer(1500, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             newLetterRunning = true;
@@ -256,7 +256,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer longHoldTimer = new CountDownTimer(3000, 1000) {
+    private final CountDownTimer longHoldTimer = new CountDownTimer(900, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             longHoldTimerRunning = true;
@@ -271,7 +271,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(500, 100) {
+    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(300, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             avoidDoubleClick = true;

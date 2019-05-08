@@ -99,7 +99,7 @@ public class Contacts extends AppCompatActivity implements ActivityConstants {
         // Cria um listener para quando esse botão é apertado.
         addContactBtn.setOnClickListener(v -> {
             // Muda de tela.
-            startActivity(new Intent(Contacts.this, AddContact.class));
+            startActivity(AddContact.class);
         });
 
         // Botão para enviar uma mensagem para o contato selecionado.

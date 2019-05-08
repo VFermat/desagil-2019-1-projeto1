@@ -17,10 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contacts"></activity>
-        <activity android:name=".AddContact"></activity>
-        <activity android:name=".Morse"></activity>
-        <activity android:name=".DefaultMessages"> </activity>
+        <activity android:name=".Contacts"/>
+        <activity android:name=".AddContact"/>
+        <activity android:name=".Morse"/>
+        <activity android:name=".DefaultMessages"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

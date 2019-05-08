@@ -86,20 +86,23 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         this.editTextMorseMessage = findViewById(R.id.morse_message);
         updateMorseText();
 
-        Button morseButton = findViewById(R.id.morse);
-        morseButton.setOnLongClickListener(longHoldListener);
-        morseButton.setOnTouchListener(longHoldTouchListener);
-        morseButton.setOnClickListener(clickListener);
+        Button buttonMorse = findViewById(R.id.morse);
+        buttonMorse.setOnLongClickListener(longHoldListener);
+        buttonMorse.setOnTouchListener(longHoldTouchListener);
+        buttonMorse.setOnClickListener(clickListener);
 
         // Pegando o widgets.
         Button buttonSendMsg = findViewById(R.id.button_send);
         Button buttonAddMsgToList = findViewById(R.id.button_add);
+        Button buttonDeleteChar = findViewById(R.id.button_delete);
 
         // Cria um listener para quando esse botão é apertado.
         buttonSendMsg.setOnClickListener(sendMessageListener);
 
         // Cria um listener para quando esse botão é apertado.
         buttonAddMsgToList.setOnClickListener(addMsgToListListener);
+
+        buttonDeleteChar.setOnClickListener(deleteCharListener);
     }
 
     private final View.OnClickListener addMsgToListListener = new View.OnClickListener() {
@@ -160,6 +163,18 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                     showToast("Número inválido!");
                 }
             }
+        }
+    };
+
+    private final View.OnClickListener deleteCharListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!message.equals("")) {
+                message = message.substring(0, message.length() - 1);
+            } else {
+                showToast("Nada Para Deletar");
+            }
+            updateText();
         }
     };
 

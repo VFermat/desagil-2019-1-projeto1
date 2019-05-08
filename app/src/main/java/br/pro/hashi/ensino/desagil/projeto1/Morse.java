@@ -17,7 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +33,8 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     private boolean longHoldTimerRunning = false;
     private boolean avoidDoubleClick = false;
     private boolean newLetterRunning = false;
-    private EditText editTextMessage;
-    private EditText editTextMorseMessage;
+    private TextView textViewMessage;
+    private TextView textViewMorseMessage;
     private Class nextActivity;
     private String phoneNumber;
     private String contactName;
@@ -80,26 +80,29 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                 throw new NullPointerException();
         }
 
-        this.editTextMessage = findViewById(R.id.text_message);
+        this.textViewMessage = findViewById(R.id.text_message);
         updateText();
 
-        this.editTextMorseMessage = findViewById(R.id.morse_message);
+        this.textViewMorseMessage = findViewById(R.id.morse_message);
         updateMorseText();
 
-        Button morseButton = findViewById(R.id.morse);
-        morseButton.setOnLongClickListener(longHoldListener);
-        morseButton.setOnTouchListener(longHoldTouchListener);
-        morseButton.setOnClickListener(clickListener);
+        Button buttonMorse = findViewById(R.id.morse);
+        buttonMorse.setOnLongClickListener(longHoldListener);
+        buttonMorse.setOnTouchListener(longHoldTouchListener);
+        buttonMorse.setOnClickListener(clickListener);
 
         // Pegando o widgets.
         Button buttonSendMsg = findViewById(R.id.button_send);
         Button buttonAddMsgToList = findViewById(R.id.button_add);
+        Button buttonDeleteChar = findViewById(R.id.button_delete);
 
         // Cria um listener para quando esse botão é apertado.
         buttonSendMsg.setOnClickListener(sendMessageListener);
 
         // Cria um listener para quando esse botão é apertado.
         buttonAddMsgToList.setOnClickListener(addMsgToListListener);
+
+        buttonDeleteChar.setOnClickListener(deleteCharListener);
     }
 
     private final View.OnClickListener addMsgToListListener = new View.OnClickListener() {
@@ -160,6 +163,18 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                     showToast("Número inválido!");
                 }
             }
+        }
+    };
+
+    private final View.OnClickListener deleteCharListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!message.equals("")) {
+                message = message.substring(0, message.length() - 1);
+            } else {
+                showToast("Nada Para Deletar");
+            }
+            updateText();
         }
     };
 
@@ -224,7 +239,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer spaceTimer = new CountDownTimer(2000, 1000) {
+    private final CountDownTimer spaceTimer = new CountDownTimer(600, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             spaceTimerRunning = true;
@@ -239,7 +254,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer newLetterTimer = new CountDownTimer(5000, 1000) {
+    private final CountDownTimer newLetterTimer = new CountDownTimer(1500, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             newLetterRunning = true;
@@ -256,7 +271,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer longHoldTimer = new CountDownTimer(3000, 1000) {
+    private final CountDownTimer longHoldTimer = new CountDownTimer(900, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             longHoldTimerRunning = true;
@@ -271,7 +286,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         }
     };
 
-    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(500, 100) {
+    private final CountDownTimer avoidDoubleClickTimer = new CountDownTimer(300, 100) {
         @Override
         public void onTick(long millisUntilFinished) {
             avoidDoubleClick = true;
@@ -284,11 +299,11 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     };
 
     private void updateText() {
-        this.editTextMessage.setText(this.message);
+        this.textViewMessage.setText(this.message);
     }
 
     private void updateMorseText() {
-        this.editTextMorseMessage.setText(this.morseWord);
+        this.textViewMorseMessage.setText(this.morseWord);
     }
 
     private void vibrate() {

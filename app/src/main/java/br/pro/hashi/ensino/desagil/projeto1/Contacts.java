@@ -1,12 +1,19 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,29 +23,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Contacts extends AppCompatActivity implements ActivityConstants {
-    // Declarando os botões:
-    private Button addContactBtn;
-    private Button sendToContactBtn;
-    private Button upContactBtn;
-    private Button downContactBtn;
     private String message = "";
     private Class nextActivity;
 
     // Lista que guarda todas as caixas de texto que exibem as mensagens.
-    private LinkedList<TextView> contactList = new LinkedList<>();
+    private final LinkedList<TextView> contactList = new LinkedList<>();
 
     // Lista que guarda o index da mensagem sendo mostrada.
-    private LinkedList<Integer> contactListIndex = new LinkedList<>();
+    private final LinkedList<Integer> contactListIndex = new LinkedList<>();
 
     // Lista de mensagens.
-    private LinkedList<String> contacts = new LinkedList<>();
-    private LinkedList<String> contactNumber = new LinkedList<>();
+    private final LinkedList<String> contacts = new LinkedList<>();
+    private final LinkedList<String> contactNumber = new LinkedList<>();
 
     // Criando o objeto que contém a base de dados do Firebase.
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseRoot = this.database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseRoot = this.database.getReference();
+
+    // Esta constante é um código que identifica o pedido de "mandar sms".
+    private static final int REQUEST_SEND_SMS = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,87 +93,66 @@ public class Contacts extends AppCompatActivity implements ActivityConstants {
         });
 
         // Botão que adiciona um novo contato.
-        this.addContactBtn = (Button) findViewById(R.id.addContact_btn);
+        // Declarando os botões:
+        Button addContactBtn = findViewById(R.id.addContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.addContactBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muda de tela.
-                startActivity(new Intent(Contacts.this, AddContact.class));
-            }
+        addContactBtn.setOnClickListener(v -> {
+            // Muda de tela.
+            startActivity(new Intent(Contacts.this, AddContact.class));
         });
 
         // Botão para enviar uma mensagem para o contato selecionado.
-        this.sendToContactBtn = (Button) findViewById(R.id.sendToContact_btn);
+        Button sendToContactBtn = findViewById(R.id.sendToContact_btn);
 
-        // Cria um listener para quando esse botão é apertado.
-        this.sendToContactBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Pegando o contato selecionada:
-                String[1] selectedContact = getSelectedContact();
-
-                // Muda de tela e passa como variável para a próxima tela
-                // a mensagem que foi selecionada.
-                Intent intent = new Intent(Contacts.this, Morse.class);
-                intent.putExtra(EXTRA_MESSAGE, selectedMsg);
-                startActivity(intent);
-            }
-        });
+        if (nextActivity == Morse.class) {
+            sendToContactBtn.setOnClickListener(sendContactListener);
+        } else {
+            sendToContactBtn.setOnClickListener(sendMessageListener);
+        }
 
         // Botão que sobe a lista de mensagens.
-        this.upContactBtn = (Button) findViewById(R.id.upContact_btn);
+        Button upContactBtn = findViewById(R.id.upContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.upContactBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveUpContactList();
-            }
-        });
+        upContactBtn.setOnClickListener(v -> moveUpContactList());
 
         // Botão que desce a lista de mensagens.
-        this.downContactBtn = (Button) findViewById(R.id.downContact_btn);
+        Button downContactBtn = findViewById(R.id.downContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.downContactBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveDownContactList();
-            }
-        });
+        downContactBtn.setOnClickListener(v -> moveDownContactList());
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem1_box = (TextView) findViewById(R.id.listItem1_box);
+        TextView listItem1_box = findViewById(R.id.listItem1_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         contactList.add(listItem1_box);
         contactListIndex.add(0);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem2_box = (TextView) findViewById(R.id.listItem2_box);
+        TextView listItem2_box = findViewById(R.id.listItem2_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         contactList.add(listItem2_box);
         contactListIndex.add(1);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem3_box = (TextView) findViewById(R.id.listItem3_box);
+        TextView listItem3_box = findViewById(R.id.listItem3_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         contactList.add(listItem3_box);
         contactListIndex.add(2);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem4_box = (TextView) findViewById(R.id.listItem4_box);
+        TextView listItem4_box = findViewById(R.id.listItem4_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         contactList.add(listItem4_box);
         contactListIndex.add(3);
 
         // Caixa de texto que exibe as mensagens padrão.
-        TextView listItem5_box = (TextView) findViewById(R.id.listItem5_box);
+        TextView listItem5_box = findViewById(R.id.listItem5_box);
         // Mudando a mensagem mostrada.
         // Adicionando à lista de caixas de texto e à lista de indexes.
         contactList.add(listItem5_box);
@@ -177,14 +162,54 @@ public class Contacts extends AppCompatActivity implements ActivityConstants {
     private final View.OnClickListener sendMessageListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (ContextCompat.checkSelfPermission(Contacts.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
 
+                String[] selectedContact = getSelectedContact();
+                String contactName = selectedContact[0];
+                String phoneNumber = selectedContact[1];
+                if (message.isEmpty()) {
+                    showToast("Mensagem inválida!");
+                    return;
+                }
+
+                String phone = "5511987448483";
+
+                // Esta verificação do número de telefone é bem
+                // rígida, pois exige até mesmo o código do país.
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
+                    showToast("Número inválido!");
+                    return;
+                }
+
+                // Enviar uma mensagem de SMS. Por simplicidade,
+                // não estou verificando se foi mesmo enviada,
+                // mas é possível fazer uma versão que verifica.
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(phone, null, message, null, null);
+                startActivity(nextActivity);
+
+            } else {
+
+                // Senão, precisamos pedir essa permissão.
+
+                // Cria um vetor de permissões a pedir. Como queremos
+                // uma só, parece um pouco feio, mas é bem conveniente
+                // quando queremos pedir várias permissões de uma vez.
+                String[] permissions = new String[]{
+                        Manifest.permission.SEND_SMS,
+                };
+
+                ActivityCompat.requestPermissions(Contacts.this, permissions, REQUEST_SEND_SMS);
+            }
         }
     };
 
     private final View.OnClickListener sendContactListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String[1] selectedContact = getSelectedContact();
+            String[] selectedContact = getSelectedContact();
+
+            startActivity(nextActivity, selectedContact[1], selectedContact[0]);
         }
     };
 
@@ -250,7 +275,7 @@ public class Contacts extends AppCompatActivity implements ActivityConstants {
         // Percorremos todas as mensagens salvas e as adicionamos à lista de mensagens.
         for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
             String msg = dataSnap.getKey();
-            String number = dataSnap.getValue().toString();
+            String number = Objects.requireNonNull(dataSnap.getValue()).toString();
             this.contacts.add(msg);
             this.contactNumber.add(number);
         }
@@ -260,6 +285,16 @@ public class Contacts extends AppCompatActivity implements ActivityConstants {
         this.contactList.get(2).setText(this.contacts.get(2));
         this.contactList.get(3).setText(this.contacts.get(3));
         this.contactList.get(4).setText(this.contacts.get(4));
+    }
+
+    // Método de conveniência para mostrar uma bolha de texto.
+    private void showToast(String text) {
+
+        // Constrói uma bolha de duração curta.
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+
+        // Mostra essa bolha.
+        toast.show();
     }
 
     private void startActivity(Class c, String phoneNumber, String contactName) {

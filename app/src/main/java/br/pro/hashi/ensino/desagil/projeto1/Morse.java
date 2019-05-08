@@ -115,8 +115,6 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     private final View.OnClickListener dicListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Map alphaMorse = translator.dictAlphaToMorse();
-            System.out.println("\n\n\n" + alphaMorse);
             startActivity(Dictionary.class);
         }
     };

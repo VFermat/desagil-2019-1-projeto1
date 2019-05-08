@@ -1,5 +1,6 @@
 package br.pro.hashi.ensino.desagil.projeto1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -114,26 +115,27 @@ public class Translator {
     }
 
     // Funções criadas para facilitar a implementação do dicionário
-    public Map<Character, String> dictAlphaToMorse() {
-        HashMap<Character, String> hashMap = new HashMap<>();
+    public ArrayList<String> dictAlphaToMorse() {
+        ArrayList<String> returnList = new ArrayList<>();
+
         for (Map.Entry<Character, Node> entry: map.entrySet()) {
             Character key = entry.getKey();
             String morse = this.charToMorse(key);
-            hashMap.put(key, morse);
+            returnList.add(key + " => " + morse);
         }
 
-        Map<Character, String> returnMap = new TreeMap<>(hashMap);
-
-        return returnMap;
+        return returnList;
     }
 
-    public Map<String, Character> dictMorseToAlpha() {
-        Map<String, Character> map = new HashMap<>();
+    public ArrayList<String> dictMorseToAlpha() {
+        ArrayList<String> returnList = new ArrayList<>();
+
         for (String morse : this.getCodes()) {
             Character character = this.morseToChar(morse);
-            map.put(morse, character);
+            returnList.add(morse + " => " + character);
         }
-        return map;
+
+        return returnList;
     }
 
 }

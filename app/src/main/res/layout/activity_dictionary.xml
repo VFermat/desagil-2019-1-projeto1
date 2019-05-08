@@ -2,30 +2,33 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorListItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Dictionary">
 
     <ListView
-        android:layout_width="190dp"
-        android:layout_height="690dp"
-        app:layout_constraintHorizontal_weight="0.5"
+        android:id="@+id/list_AlphaToMorse"
+        android:layout_width="140dp"
+        android:layout_height="500dp"
+
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <ListView
-        android:layout_width="190dp"
-        android:layout_height="690dp"
-        app:layout_constraintHorizontal_weight="0.5"
+        android:id="@+id/list_MorseToAlpha"
+        android:layout_width="140dp"
+        android:layout_height="500dp"
+
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

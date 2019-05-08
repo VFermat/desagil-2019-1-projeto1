@@ -33,8 +33,8 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     private boolean longHoldTimerRunning = false;
     private boolean avoidDoubleClick = false;
     private boolean newLetterRunning = false;
-    private TextView editTextMessage;
-    private TextView editTextMorseMessage;
+    private TextView textViewMessage;
+    private TextView textViewMorseMessage;
     private Class nextActivity;
     private String phoneNumber;
     private String contactName;
@@ -80,10 +80,10 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                 throw new NullPointerException();
         }
 
-        this.editTextMessage = findViewById(R.id.text_message);
+        this.textViewMessage = findViewById(R.id.text_message);
         updateText();
 
-        this.editTextMorseMessage = findViewById(R.id.morse_message);
+        this.textViewMorseMessage = findViewById(R.id.morse_message);
         updateMorseText();
 
         Button buttonMorse = findViewById(R.id.morse);
@@ -299,11 +299,11 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
     };
 
     private void updateText() {
-        this.editTextMessage.setText(this.message);
+        this.textViewMessage.setText(this.message);
     }
 
     private void updateMorseText() {
-        this.editTextMorseMessage.setText(this.morseWord);
+        this.textViewMorseMessage.setText(this.morseWord);
     }
 
     private void vibrate() {

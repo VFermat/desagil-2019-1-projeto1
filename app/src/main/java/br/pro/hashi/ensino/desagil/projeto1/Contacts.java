@@ -32,6 +32,7 @@ public class Contacts extends AppCompatActivity {
 
     // Lista de mensagens.
     private LinkedList<String> contacts = new LinkedList<>();
+    private LinkedList<String> contactNumber = new LinkedList<>();
 
     // Criando o objeto que contém a base de dados do Firebase.
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -196,8 +197,18 @@ public class Contacts extends AppCompatActivity {
         }
     }
 
-    private String getSelectedContact() {
-        return this.contacts.get(this.contactListIndex.get(2));
+    private String[] getSelectedContact() {
+        String name = this.contacts.get(this.contactListIndex.get(2));
+        String number = this.contactNumber.get(this.contactListIndex.get(2));
+
+        System.out.println("\n\n\n NOME: " + name);
+        System.out.println("\n\n\n NUMBER: " + number);
+
+        String[] info = new String[2];
+        info[0] = name;
+        info[1] = number;
+
+        return info;
     }
 
     private void buildContactList(DataSnapshot dataSnapshot) {
@@ -206,7 +217,9 @@ public class Contacts extends AppCompatActivity {
         // Percorremos todas as mensagens salvas e as adicionamos à lista de mensagens.
         for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
             String msg = dataSnap.getKey();
+            String number = dataSnap.getValue().toString();
             this.contacts.add(msg);
+            this.contactNumber.add(number);
         }
 
         this.contactList.get(0).setText(this.contacts.get(0));

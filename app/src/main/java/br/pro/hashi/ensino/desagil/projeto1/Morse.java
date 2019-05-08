@@ -8,6 +8,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.Manifest;
@@ -157,7 +158,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                     ActivityCompat.requestPermissions(Morse.this, permissions, REQUEST_SEND_SMS);
                 }
             } else {
-                if (message != "") {
+                if (!message.equals("")) {
                     startActivity(nextActivity, message);
                 } else {
                     showToast("Número inválido!");
@@ -326,7 +327,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
 
         // Constrói uma bolha de duração curta.
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
-
+        toast.setGravity(Gravity.TOP, 0, 0);
         // Mostra essa bolha.
         toast.show();
     }

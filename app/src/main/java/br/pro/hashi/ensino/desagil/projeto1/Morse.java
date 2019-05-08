@@ -121,8 +121,6 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                         return;
                     }
 
-                    String phone = "5511987448483";
-
                     // Esta verificação do número de telefone é bem
                     // rígida, pois exige até mesmo o código do país.
                     if (!PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
@@ -134,7 +132,7 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                     // não estou verificando se foi mesmo enviada,
                     // mas é possível fazer uma versão que verifica.
                     SmsManager manager = SmsManager.getDefault();
-                    manager.sendTextMessage(phone, null, message, null, null);
+                    manager.sendTextMessage(phoneNumber, null, message, null, null);
 
                     // Limpar o campo para nenhum engraçadinho
                     // ficar apertando o botão várias vezes.

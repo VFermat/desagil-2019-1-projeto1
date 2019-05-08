@@ -10,6 +10,7 @@
       um processo de pedido. Veja a classe MainActivity.
     -->
     <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,10 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contacts"/>
-        <activity android:name=".AddContact"/>
-        <activity android:name=".Morse"/>
-        <activity android:name=".DefaultMessages"/>
+        <activity android:name=".Dictionary"></activity>
+        <activity android:name=".Contacts" />
+        <activity android:name=".AddContact" />
+        <activity android:name=".Morse" />
+        <activity android:name=".DefaultMessages" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package br.pro.hashi.ensino.desagil.projeto1;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Queue;
 
 // Não é permitido mudar nada nessa classe
 // exceto o recheio dos três métodos.
@@ -88,7 +89,26 @@ public class Translator {
     // Você deve mudar o recheio deste método, de
     // acordo com os requisitos não-funcionais.
     public LinkedList<String> getCodes() {
-        return new LinkedList<>();
+        LinkedList<String> morseList = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+
+            Node current = queue.poll();
+
+            if (current.getValue() != ' ') {
+                morseList.add(charToMorse(current.getValue()));
+            }
+            if (current.getLeft() != null) {
+                queue.add(current.getLeft());
+            }
+            if (current.getRight() != null) {
+                queue.add(current.getRight());
+            }
+        }
+
+        return morseList;
     }
 
 }

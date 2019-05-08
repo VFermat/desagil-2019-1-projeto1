@@ -17,12 +17,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.LinkedList;
 
-public class Contacts extends AppCompatActivity {
+public class Contacts extends AppCompatActivity implements ActivityConstants {
     // Declarando os botões:
-    private Button addContact_btn;
-    private Button sendToContact_btn;
-    private Button upContact_btn;
-    private Button downContact_btn;
+    private Button addContactBtn;
+    private Button sendToContactBtn;
+    private Button upContactBtn;
+    private Button downContactBtn;
+    private String message = "";
+    private Class nextActivity;
 
     // Lista que guarda todas as caixas de texto que exibem as mensagens.
     private LinkedList<TextView> contactList = new LinkedList<>();
@@ -37,13 +39,30 @@ public class Contacts extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseRoot = this.database.getReference();
 
-    // Usado para passar informação para a próxima tela.
-    public static final String EXTRA_MESSAGE = "br.pro.hashi.ensino.desagil.projeto1.EXTRA_MESSAGE";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+
+        Intent intent = getIntent();
+        int callingActivity = intent.getIntExtra("callingActivity", 0);
+        switch (callingActivity) {
+            case MAINACITVITY:
+                nextActivity = Morse.class;
+                break;
+            case DEFAULTMESSAGESACTIVITY:
+                throw new NullPointerException();
+            case MORSEACTIVITY:
+                message = intent.getStringExtra("message");
+                nextActivity = MainActivity.class;
+                break;
+            case CONTACTACTIVITY:
+                throw new NullPointerException();
+            case ADDCONTACTACTIVITY:
+                break;
+            default:
+                throw new NullPointerException();
+        }
 
         // Para ler a base de dados toda vez que ela sofrer mudanças.
         databaseRoot.addValueEventListener(new ValueEventListener() {
@@ -67,10 +86,10 @@ public class Contacts extends AppCompatActivity {
         });
 
         // Botão que adiciona um novo contato.
-        this.addContact_btn = (Button) findViewById(R.id.addContact_btn);
+        this.addContactBtn = (Button) findViewById(R.id.addContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.addContact_btn.setOnClickListener(new View.OnClickListener() {
+        this.addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Muda de tela.
@@ -79,14 +98,14 @@ public class Contacts extends AppCompatActivity {
         });
 
         // Botão para enviar uma mensagem para o contato selecionado.
-        this.sendToContact_btn = (Button) findViewById(R.id.sendToContact_btn);
+        this.sendToContactBtn = (Button) findViewById(R.id.sendToContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.sendToContact_btn.setOnClickListener(new View.OnClickListener() {
+        this.sendToContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Pegando o contato selecionada:
-                String selectedMsg = getSelectedContact();
+                String[1] selectedContact = getSelectedContact();
 
                 // Muda de tela e passa como variável para a próxima tela
                 // a mensagem que foi selecionada.
@@ -97,10 +116,10 @@ public class Contacts extends AppCompatActivity {
         });
 
         // Botão que sobe a lista de mensagens.
-        this.upContact_btn = (Button) findViewById(R.id.upContact_btn);
+        this.upContactBtn = (Button) findViewById(R.id.upContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.upContact_btn.setOnClickListener(new View.OnClickListener() {
+        this.upContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveUpContactList();
@@ -108,10 +127,10 @@ public class Contacts extends AppCompatActivity {
         });
 
         // Botão que desce a lista de mensagens.
-        this.downContact_btn = (Button) findViewById(R.id.downContact_btn);
+        this.downContactBtn = (Button) findViewById(R.id.downContact_btn);
 
         // Cria um listener para quando esse botão é apertado.
-        this.downContact_btn.setOnClickListener(new View.OnClickListener() {
+        this.downContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveDownContactList();
@@ -153,6 +172,20 @@ public class Contacts extends AppCompatActivity {
         contactList.add(listItem5_box);
         contactListIndex.add(4);
     }
+
+    private final View.OnClickListener sendMessageListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
+    private final View.OnClickListener sendContactListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String[1] selectedContact = getSelectedContact();
+        }
+    };
 
     private void moveDownContactList() {
         // Essa função desce a lista de contatos.
@@ -201,7 +234,7 @@ public class Contacts extends AppCompatActivity {
     }
 
     private void buildContactList(DataSnapshot dataSnapshot) {
-        // Essa função cria a lista de mensagens padrão.
+        // Essa função cria a lista de Contatos padrão.
 
         // Percorremos todas as mensagens salvas e as adicionamos à lista de mensagens.
         for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
@@ -214,5 +247,19 @@ public class Contacts extends AppCompatActivity {
         this.contactList.get(2).setText(this.contacts.get(2));
         this.contactList.get(3).setText(this.contacts.get(3));
         this.contactList.get(4).setText(this.contacts.get(4));
+    }
+
+    private void startActivity(Class c, String phoneNumber, String contactName) {
+        Intent intent = new Intent(Contacts.this, c);
+        intent.putExtra("callingActivity", CONTACTACTIVITY);
+        intent.putExtra("phoneNumber", phoneNumber);
+        intent.putExtra("contactName", contactName);
+        startActivity(intent);
+    }
+
+    private void startActivity(Class c) {
+        Intent intent = new Intent(Contacts.this, c);
+        intent.putExtra("callingActivity", CONTACTACTIVITY);
+        startActivity(intent);
     }
 }

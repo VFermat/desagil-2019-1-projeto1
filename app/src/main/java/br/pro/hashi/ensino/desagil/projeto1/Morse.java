@@ -156,7 +156,11 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
                     ActivityCompat.requestPermissions(Morse.this, permissions, REQUEST_SEND_SMS);
                 }
             } else {
-                startActivity(nextActivity, message);
+                if (message != "") {
+                    startActivity(nextActivity, message);
+                } else {
+                    showToast("Número inválido!");
+                }
             }
         }
     };

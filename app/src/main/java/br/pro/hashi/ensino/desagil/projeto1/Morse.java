@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
+
 public class Morse extends AppCompatActivity implements ActivityConstants {
 
     private final Translator translator = new Translator();
@@ -96,6 +98,10 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
         Button buttonSendMsg = findViewById(R.id.button_send);
         Button buttonAddMsgToList = findViewById(R.id.button_add);
         Button buttonDeleteChar = findViewById(R.id.button_delete);
+        Button dic_btn = findViewById(R.id.dic_btn);
+
+        // Cria um listener para quando o botão do dicionário é apertado.
+        dic_btn.setOnClickListener(dicListener);
 
         // Cria um listener para quando esse botão é apertado.
         buttonSendMsg.setOnClickListener(sendMessageListener);
@@ -105,6 +111,13 @@ public class Morse extends AppCompatActivity implements ActivityConstants {
 
         buttonDeleteChar.setOnClickListener(deleteCharListener);
     }
+
+    private final View.OnClickListener dicListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(Dictionary.class);
+        }
+    };
 
     private final View.OnClickListener addMsgToListListener = new View.OnClickListener() {
         @Override

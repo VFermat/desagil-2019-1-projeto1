@@ -20,6 +20,7 @@
 
         android:text="@string/screen_defMSg_addDefMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,6 +37,7 @@
 
         android:text="@string/screen_defMsg_sendMsg_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -83,6 +85,7 @@
         android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="24sp"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -104,6 +107,7 @@
         android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="24sp"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -126,6 +130,7 @@
         android:paddingLeft="30dp"
         android:text="Mensagem Selecionada"
         android:textSize="24sp"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -147,6 +152,7 @@
         android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="24sp"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -168,6 +174,7 @@
         android:paddingLeft="30dp"
         android:text="Mensagem"
         android:textSize="24sp"
+        android:textColor="#FFFFFF"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
